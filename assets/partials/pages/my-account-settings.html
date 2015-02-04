@@ -1,0 +1,624 @@
+<div class="container paper">
+          <div class="shadow"></div>
+           <div class="row">
+               <div class="col-lg-12">
+                   <div class="content">
+                      <div class="title">
+                          <h1>MY ACCOUNT</h1>
+                      </div>
+                      
+                      
+                     
+                      <div class="paper-content">
+                        <div class="row">
+                            <div class="col-lg-10 col-sm-10 col-sm-offset-1 col-lg-offset-1">
+                                <div class="filters">
+                                      <ul class="nav-tabs nav">
+                                      <li   ><a href="my-account.html">My Dashboard</a></li>
+                                      <li   ><a href="my-account-inbox.html">My Inbox</a></li>
+                                      <li class="active" ><a href="my-account-settings.html">My Settings</a></li>
+                                      <li ><a href="my-account-friends.html">My Friends</a></li>
+                                      <li ><a href="my-accounts-block-list.html">My Block List</a></li>
+                                      <li ><a href="my-account-courts.html">My Courts</a></li>
+                                      <li ><a href="my-account-calendar.html">My Calendar</a></li>
+                                      <li ><a href="my-account-entires.html">My Entires</a></li>
+
+                                       </ul>
+                                </div>
+                                
+                                <hr>
+                            </div>
+
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-lg-10 col-lg-offset-1">
+                               <div class="panel-group settings-accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                               
+<!--  Login Settings   -->                            
+                               
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-target="#login">
+      <h4 class="panel-title">
+       Login details
+      </h4>
+    </div>
+    <div id="login" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+      <form class="form-horizontal" role="form" name="login" method="post">
+  <div class="form-group">
+ 
+    <label for="player-name" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" id="player-name" name="emailaddressl" >
+    </div>
+  </div>
+  
+  <div class="form-group">
+ 
+    <label for="player-name" class="col-sm-2 control-label">Password</label>
+    <div class="col-sm-4">
+      <input type="password" class="form-control" id="player-name" name="emailaddressl" >
+    </div>
+  </div>
+  
+          <div class="form-group">
+ 
+    <label for="player-name" class="col-sm-2 control-label">Confirm Password</label>
+    <div class="col-sm-4">
+      <input type="password" class="form-control" id="player-name" name="emailaddressl" >
+    </div>
+  </div>
+  
+  
+
+  
+<div class="submit col-lg-12 ">
+   <button type="submit"  class="btn btn-green center-block">Update</button>  
+    
+</div>
+
+
+
+</form>
+      
+       
+      </div>
+    </div>
+  </div>
+  
+  
+  <!--  Profile Settings   -->                            
+                               
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-target="#profile">
+      <h4 class="panel-title">
+       Profile Settings
+      </h4>
+    </div>
+    <div id="profile" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+      <form class="form-horizontal" role="form" name="login" method="post">
+  
+  
+  <div class="form-group">
+    
+    <label class="col-sm-2 control-label">Show profile in searches ?</label>
+    <div class="col-sm-10">     
+        <div class="checkbox">
+        <label>
+          <input type="checkbox" checked id="profilevisible">
+        </label>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    
+    <label class="col-sm-2 control-label">Allow other to see when I am online ?</label>
+    <div class="col-sm-10">     
+        <div class="checkbox">
+        <label>
+          <input type="checkbox" checked id="profilevisible">
+        </label>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <div class="form-group">
+    <span  class="help-block ">Nationality is used only for Knockout Tournaments purposes. <br>
+    By choosing you nationality you will see a flag next to your name.
+    If you country is not on the list, please let us know.</span> 
+    <label  class="col-sm-2 control-label">Nationality</label>
+    <div class="col-sm-10">
+     
+<select name="parkratingfrom" class="form-control park-rating">
+     <option value="0">Please choose </option>
+     <option value="1">Afghanistan</option>
+     <option value="2">African Union(OAS)</option>
+     <option value="3">Albania</option>
+     <option value="4">Algeria</option>
+     <option value="5">American Samoa</option>
+     <option value="6">Andorra</option>
+     <option value="7">Anguilla</option>
+     <option value="8">Antarctica</option>
+     <option value="9">Argentina</option>
+       
+         </select>
+
+    </div>
+  </div>
+  
+  
+  
+  
+  <div class="form-group">
+ <span  class="help-block ">You may optionally use this space to enter a description about yourself, your tennis preferences, availability and whatever else you would like other members of London Tennis to know about you.</span> 
+    <label for="player-name" class="col-sm-2 control-label">Main profile</label>
+    <div class="col-sm-6">
+      <textarea class="form-control" name="" id="profiletext" cols="10" rows="5"></textarea>
+    </div>
+  </div>
+  
+  <div class="form-group">
+ <span  class="help-block ">If you are in a league, you may use the box below to enter details that will only be viewable by other members of your league. <br> You may wish to include your phone number, for example.</span> 
+    <label for="player-name" class="col-sm-2 control-label">League profile</label>
+    <div class="col-sm-6">
+      <textarea class="form-control" name="" id="leagueprofiletext" cols="10" rows="5"></textarea>
+    </div>
+  </div>
+  
+  
+
+  
+<div class="submit col-lg-12 ">
+   <button type="submit" id="button_updateprofiledetails" class="btn btn-green center-block">Update</button>  
+    
+</div>
+
+
+
+</form>
+      
+       
+      </div>
+    </div>
+  </div>
+  
+  
+  <!--  Profile Settings   -->                            
+                               
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-target="#email">
+      <h4 class="panel-title">
+       Email Preferences
+      </h4>
+    </div>
+    <div id="email" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+      <form class="form-horizontal" role="form" name="login" method="post">
+  
+  
+  <div class="form-group">
+    
+    <label class="col-sm-8 control-label">Notify me via email when I receive a message from another player on London Tennis.</label>
+    <div class="col-sm-2">     
+        <div class="checkbox">
+        <label>
+          <input type="checkbox" checked id="profilevisible">
+        </label>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    
+    <label class="col-sm-8 control-label">Notify me regarding leagues, knockouts and other upcoming events on London Tennis.</label>
+    <div class="col-sm-2">     
+        <div class="checkbox">
+        <label>
+          <input type="checkbox" checked id="profilevisible">
+        </label>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    
+    <label class="col-sm-8 control-label">Notify me when a match result is submitted in my own league and division.</label>
+    <div class="col-sm-2">     
+        <div class="checkbox">
+        <label>
+          <input type="checkbox" checked id="profilevisible">
+        </label>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    
+    <label class="col-sm-8 control-label">Notify me when a match result is submitted involving a player on my tracking list.<a class="pull-right" href="my-account-friends.html">(Click here to modify your tracked players.)</a></label>
+    <div class="col-sm-2">     
+        <div class="checkbox">
+        <label>
+          <input type="checkbox" checked id="profilevisible">
+        </label>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    
+    <label class="col-sm-8 control-label">Notify me when a result is posted in which I was involved.</label>
+    <div class="col-sm-2">     
+        <div class="checkbox">
+        <label>
+          <input type="checkbox" checked id="profilevisible">
+        </label>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    
+    <label class="col-sm-8 control-label">Send me weekly status updates (number of matches played, etc...) for any leagues or knockouts in which I am involved.</label>
+    <div class="col-sm-2">     
+        <div class="checkbox">
+        <label>
+          <input type="checkbox" checked id="profilevisible">
+        </label>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    
+    <label class="col-sm-8 control-label">Notify me if my opponent deletes one of my match results.</label>
+    <div class="col-sm-2">     
+        <div class="checkbox">
+        <label>
+          <input type="checkbox" checked id="profilevisible">
+        </label>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    
+    <label class="col-sm-8 control-label">Notify me when someone responds to a thread in which I have posted. If you leave this option checked you can still turn off notifications for individual threads as and when you need to.</label>
+    <div class="col-sm-2">     
+        <div class="checkbox">
+        <label>
+          <input type="checkbox" checked id="profilevisible">
+        </label>
+      </div>
+    </div>
+  </div>
+
+  
+<div class="submit col-lg-12 ">
+   <button type="submit" id="button_updateprofiledetails" class="btn btn-green center-block">Update</button>  
+    
+</div>
+
+
+
+</form>
+      
+       
+      </div>
+    </div>
+  </div>
+  
+  
+   <!--  Profile Settings   -->                            
+                               
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-target="#history">
+      <h4 class="panel-title">
+       Playing History &amp; Standard
+      </h4>
+    </div>
+    <div id="history" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+      <form class="form-horizontal" role="form" name="login" method="post">
+      
+      
+      <div class="form-group">
+    <label  class="col-sm-2 control-label">ITN Rating</label>
+    <div class="col-sm-10">
+     
+<select name="parkratingfrom" class="form-control park-rating">
+     <option value="0">-</option>
+     <option value="1">ITN 1 - World Standard</option>
+     <option value="2">ITN 2 - National Standard</option>
+     <option value="3">ITN 3 - County Standard</option>
+     <option value="4">ITN 4 - Top Club Level</option>
+     <option value="5">ITN 5 - High Intermediate</option>
+     <option value="6">ITN 6 - Middle Intermediate</option>
+     <option value="7">ITN 7 - Low Intermediate</option>
+     <option value="8">ITN 8 - Good Recreational</option>
+     <option value="9">ITN 9 - Recreational</option>
+         <option value="10">ITN 10 - Starter</option>
+         </select>
+        <label  class="control-label rating-label"><a href="rating-help.html">Click here to learn about the ratings</a></label>
+    </div>
+  </div>
+      
+      <div class="form-group">
+ 
+    <label for="player-name" class="col-sm-2 control-label">LTA Number (optional)</label>
+    <div class="col-sm-3">
+      <input type="password" class="form-control" id="player-name" name="emailaddressl" >
+    </div>
+  </div>
+      
+      <div class="form-group">  
+    <label class="col-sm-2 control-label">LTA Rating (optional)</label>
+    <div class="col-sm-2">     
+<select name="ltaratingfrom" class="form-control ">
+     <option value="0">Any</option>
+     <option value="10.2">10.2</option>
+     <option value="10.1">10.1</option>
+     <option value="9.2">9.2</option>
+     <option value="9.1">9.1</option>
+     <option value="8.2">8.2</option>
+     <option value="8.1">8.1</option>
+     <option value="7.2">7.2</option>
+     <option value="7.1">7.1</option>
+     <option value="6.2">6.2</option>
+     <option value="6.1">6.1</option>
+     <option value="5.2">5.2</option>
+     <option value="5.1">5.1</option>
+     <option value="4.2">4.2</option>
+     <option value="4.1">4.1</option>
+     <option value="3.2">3.2</option>
+     <option value="3.1">3.1</option>
+     <option value="2.2">2.2</option>
+     <option value="2.1">2.1</option>
+     <option value="1.2">1.2</option>
+     <option value="1.1">1.1</option>
+     </select>      
+    </div>
+  </div>
+  
+  
+  
+  
+<div class="submit col-lg-12 ">
+   <button type="submit" id="button_updateprofiledetails" class="btn btn-green center-block">Update</button>  
+    
+</div>
+
+
+
+</form>
+      
+       
+      </div>
+    </div>
+  </div>
+  
+  
+  
+   
+  
+   <!--  Profile Settings   -->                            
+                               
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-target="#playing">
+      <h4 class="panel-title">
+       Playing Preferences
+      </h4>
+    </div>
+    <div id="playing" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+      
+      
+      <form class="form-horizontal" role="form" name="login" method="post">
+      
+      
+      <div class="form-group">
+     <div class="form-title">My Location</div>
+    <label class="col-sm-2 control-label">I can play within</label>
+    
+    <div class="col-sm-10">
+     
+      <input type="text" class="form-control" id="player-within-miles" placeholder="eg.4">
+      <label class="control-label within-miles">Miles of Postcode</label>
+      <input type="text" class="form-control" id="player-within-postcode" placeholder="eg.SW6">
+      
+    </div>
+   
+  </div>
+      <hr> 
+      
+      
+      <div class="form-group">
+     <div class="form-title">My Preferred Opponents</div>
+    <label class="col-sm-2  control-label">Male</label>
+    <div class="col-sm-2">     
+        <div class="checkbox">
+        <label>
+          <input type="checkbox" id="profilevisible">
+        </label>
+      </div>
+    </div>
+  </div>
+     <div class="form-group">
+    <label class="col-sm-2  control-label">Female</label>
+    <div class="col-sm-2">     
+        <div class="checkbox">
+        <label>
+          <input type="checkbox"  id="profilevisible">
+        </label>
+      </div>
+    </div>
+  </div>
+      <hr> 
+      
+      
+      <div class="form-group">
+     <div class="form-title">My Availability</div>
+    <label class="col-sm-3  control-label">Weekday Mornings</label>
+    <div class="col-sm-2">     
+        <div class="checkbox">
+        <label>
+          <input type="checkbox" id="play_wdmorn">
+        </label>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group ">
+    <label class="col-sm-3  control-label">Weekday Afternoons</label>
+    <div class="col-sm-2">     
+        <div class="checkbox">
+        <label>
+          <input type="checkbox" id="play_wdmorn">
+        </label>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label class="col-sm-3  control-label">Weekday Evenings</label>
+    <div class="col-sm-2">     
+        <div class="checkbox">
+        <label>
+          <input type="checkbox" id="play_wdmorn">
+        </label>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label class="col-sm-3  control-label">Saturdays</label>
+    <div class="col-sm-2">     
+        <div class="checkbox">
+        <label>
+          <input type="checkbox" id="play_wdmorn">
+        </label>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label class="col-sm-3  control-label">Sundays</label>
+    <div class="col-sm-2">     
+        <div class="checkbox">
+        <label>
+          <input type="checkbox" id="play_wdmorn">
+        </label>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label class="col-sm-3  control-label">Short Notice</label>
+    <div class="col-sm-2">     
+        <div class="checkbox">
+        <label>
+          <input type="checkbox" id="play_wdmorn">
+        </label>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label class="col-sm-3  control-label">Holidays</label>
+    <div class="col-sm-2">     
+        <div class="checkbox">
+        <label>
+          <input type="checkbox" id="play_wdmorn">
+        </label>
+      </div>
+    </div>
+  </div>
+   
+   
+    
+      <hr> 
+      
+      
+            <div class="form-group">
+     <div class="form-title">My Preferred Tennis Format</div>
+    <label class="col-sm-3  control-label">Singles</label>
+    <div class="col-sm-2">     
+        <div class="checkbox">
+        <label>
+          <input type="checkbox" id="play_wdmorn">
+        </label>
+      </div>
+    </div>
+  </div>
+     
+     <div class="form-group">
+
+    <label class="col-sm-3  control-label">Doubles</label>
+    <div class="col-sm-2">     
+        <div class="checkbox">
+        <label>
+          <input type="checkbox" id="play_wdmorn">
+        </label>
+      </div>
+    </div>
+  </div>
+     
+     <div class="form-group">
+
+    <label class="col-sm-3  control-label">Mixed Doubles</label>
+    <div class="col-sm-2">     
+        <div class="checkbox">
+        <label>
+          <input type="checkbox" id="play_wdmorn">
+        </label>
+      </div>
+    </div>
+  </div>
+      
+  
+  
+  
+  
+<div class="submit col-lg-12 ">
+   <button type="submit" id="button_updateplayprefs" class="btn btn-green center-block">Update</button>  
+    
+</div>
+
+
+
+</form>
+      
+       
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+</div>
+                               
+                               
+                             
+                               
+ 
+                            </div>
+  
+                        </div>
+                        
+                        
+                     </div>  
+                    
+                   </div>
+                   
+               </div>
+               
+           </div>
+           
+</div>
