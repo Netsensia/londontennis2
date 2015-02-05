@@ -1,0 +1,104 @@
+<nav class="navbar navbar-default " role="navigation">
+    
+     
+     
+     
+      <div class="container">
+      
+      
+      
+  <!-- When  user is logged in show this instead of normal "login-panel" which is below  
+     
+        
+           
+                     <div class="login-panel loggedin">
+                          <ul >
+                             <li class="hello-user">Logged in as Casper</li>
+                              <li><a class="messages" href="#join" >You have 0 unread messages</a></li>
+                              <li><a class="help" href="#join" >Help</a></li>
+                              <li><a class="logout" href="#join" href="#join">Logout</a></li>
+                          </ul>
+
+                      </div>
+                 
+                    
+                       
+                          
+   -->
+      
+
+   
+    <!-- Default LOGIN and SIGN UP buttons, remove it when user logged in    -->
+       <div class="login-panel">
+      <ul >
+          <li><a class="login-btn" data-toggle="modal" data-target="#loginModal" href="#login">LOGIN</a></li>
+          <li><a class="join-now" href="join-page.html">JOIN NOW!</a></li>
+      </ul>
+      
+  </div>
+     
+     
+     
+     
+     
+   <!--  share icons  -->
+      
+      <div class="share">
+          <ul>
+              <li><a href="#youtube"><img src="img/yt.png" alt=""></a></li>
+               <li><a href="#twitter"><img src="img/tw.png" alt=""></a></li>
+                <li><a href="#facebook"><img src="img/fb.png" alt=""></a></li>
+              
+          </ul>
+          
+      </div>
+      
+        <div class="share-mobile">
+          <ul>
+              <li><a href="#youtube"><img src="img/yt.png" alt=""></a></li>
+               <li><a href="#twitter"><img src="img/tw.png" alt=""></a></li>
+                <li><a href="#facebook"><img src="img/fb.png" alt=""></a></li>
+              
+          </ul>
+          
+      </div>
+       
+       
+         <!--  navbar  -->
+         
+         
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+            <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt=""></a>
+        </div>
+        
+        
+        <div id="navbar" class="navbar-collapse collapse">
+           
+              <!--  navigation list , class "active" is added to the active page  -->
+            <ul class="nav navbar-nav">
+                <li class="active" ><a href="<? echo $this->url('home'); ?>">Home</a></li>
+                <li  ><a href="<? echo $this->url('players'); ?>">Players</a></li>
+                <li ><a href="<? echo $this->url('results'); ?>">Results</a></li>
+                <li  ><a href="<? echo $this->url('courts'); ?>">Courts</a></li>
+                <li ><a href="<? echo $this->url('competitions'); ?>">Competitions</a></li>
+                <li ><a href="<? echo $this->url('forums'); ?>">Forums</a></li>
+                <li ><a href="<? echo $this->url('myaccount'); ?>">My Account</a></li>
+                <li ><a href="<? echo $this->url('directories'); ?>">Directories</a></li>    
+            </ul>
+             
+        
+         
+
+       
+        </div><!--/.navbar-collapse -->
+        
+          
+        
+      </div>
+    </nav>

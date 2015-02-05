@@ -20,38 +20,85 @@ return array(
                     ),
                 ),
             ),
-            // The following is a route to simplify getting started creating
-            // new controllers and actions without needing to create a new
-            // module. Simply drop new controllers in, and you can access them
-            // using the path /application/:controller/:action
-            'application' => array(
-                'type'    => 'Literal',
+            'players' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
-                    'route'    => '/application',
+                    'route'    => '/players',
                     'defaults' => array(
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller'    => 'Index',
-                        'action'        => 'index',
+                        'controller' => 'Application\Controller\Players',
+                        'action'     => 'index',
                     ),
                 ),
-                'may_terminate' => true,
-                'child_routes' => array(
-                    'default' => array(
-                        'type'    => 'Segment',
-                        'options' => array(
-                            'route'    => '/[:controller[/:action]]',
-                            'constraints' => array(
-                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            ),
-                            'defaults' => array(
-                            ),
-                        ),
+            ),
+            'results' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/results',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Results',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
+            'courts' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/courts',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Courts',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
+            'competitions' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/competitions',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Competitions',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
+            'forums' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/forums',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Forums',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
+            'myaccount' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/myaccount',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\MyAccount',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
+            'directories' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/directories',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Directories',
+                        'action'     => 'index',
                     ),
                 ),
             ),
         ),
     ),
+
+    'view_helpers' => [
+        'invokables' => [
+            'routeName'         => 'Application\View\Helper\RouteName',
+        ],
+    ],
+    
     'service_manager' => array(
         'abstract_factories' => array(
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
@@ -73,7 +120,14 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\Index' => 'Application\Controller\IndexController',
+            'Application\Controller\Players' => 'Application\Controller\PlayersController',
+            'Application\Controller\Results' => 'Application\Controller\ResultsController',
+            'Application\Controller\Courts' => 'Application\Controller\CourtsController',
+            'Application\Controller\Competitions' => 'Application\Controller\CompetitionsController',
+            'Application\Controller\Forums' => 'Application\Controller\ForumsController',
+            'Application\Controller\MyAccount' => 'Application\Controller\MyAccountController',
+            'Application\Controller\Directories' => 'Application\Controller\DirectoriesController',
         ),
     ),
     'view_manager' => array(
