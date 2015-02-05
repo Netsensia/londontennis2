@@ -10,5 +10,10 @@
     "require": {
         "php": ">=5.3.3",
         "zendframework/zendframework": "2.3.*"
+    },
+    "config":{
+        "github-oauth":{
+   		"github.com":"{{ pillar['londontennis2']['github_oauth'] }}"
+        }
     }
 }
