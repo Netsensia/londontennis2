@@ -1,4 +1,6 @@
 <?php
+use Zend\Authentication\AuthenticationService;
+use Application\Adapter\AuthAdapter;
 /**
  * Zend Framework (http://framework.zend.com/)
  *
@@ -107,6 +109,14 @@ return array(
         'aliases' => array(
             'translator' => 'MvcTranslator',
         ),
+        'factories' => [
+            'Zend\Authentication\AuthenticationService' => function($sm) {
+                $adapter = new AuthAdapter();
+                $authService = new AuthenticationService();
+                $authService->setAdapter($adapter);
+                return $authService;
+            },
+        ],
     ),
     'translator' => array(
         'locale' => 'en_US',

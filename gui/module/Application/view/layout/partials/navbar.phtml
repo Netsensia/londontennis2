@@ -5,40 +5,11 @@
      
       <div class="container">
       
-      
-      
-  <!-- When  user is logged in show this instead of normal "login-panel" which is below  
-     
-        
-           
-                     <div class="login-panel loggedin">
-                          <ul >
-                             <li class="hello-user">Logged in as Casper</li>
-                              <li><a class="messages" href="#join" >You have 0 unread messages</a></li>
-                              <li><a class="help" href="#join" >Help</a></li>
-                              <li><a class="logout" href="#join" href="#join">Logout</a></li>
-                          </ul>
-
-                      </div>
-                 
-                    
-                       
-                          
-   -->
-      
-
-   
-    <!-- Default LOGIN and SIGN UP buttons, remove it when user logged in    -->
-       <div class="login-panel">
-      <ul >
-          <li><a class="login-btn" data-toggle="modal" data-target="#loginModal" href="#login">LOGIN</a></li>
-          <li><a class="join-now" href="join-page.html">JOIN NOW!</a></li>
-      </ul>
-      
-  </div>
-     
-     
-     
+<?php if ($user = $this->identity()) : ?>
+    <?php echo $this->partial('layout/partials/loggedin.phtml'); ?>
+<?php else: ?>
+    <?php echo $this->partial('layout/partials/loggedout.phtml'); ?>
+<?php endif; ?>
      
      
    <!--  share icons  -->
