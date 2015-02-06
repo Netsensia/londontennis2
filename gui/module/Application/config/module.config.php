@@ -22,6 +22,26 @@ return array(
                     ),
                 ),
             ),
+            'login' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/login',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Auth',
+                        'action'     => 'login',
+                    ),
+                ),
+            ),
+            'logout' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/logout',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Auth',
+                        'action'     => 'logout',
+                    ),
+                ),
+            ),
             'players' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
@@ -165,6 +185,7 @@ return array(
         ),
         'aliases' => array(
             'translator' => 'MvcTranslator',
+            'AuthenticationService' => 'Zend\Authentication\AuthenticationService',
         ),
         'factories' => [
             'Zend\Authentication\AuthenticationService' => function($sm) {
@@ -188,6 +209,7 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
+            'Application\Controller\Auth' => 'Application\Controller\AuthController',
             'Application\Controller\Players' => 'Application\Controller\PlayersController',
             'Application\Controller\Results' => 'Application\Controller\ResultsController',
             'Application\Controller\Courts' => 'Application\Controller\CourtsController',
