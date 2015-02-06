@@ -49,11 +49,20 @@ return array(
                     'route'    => '/players',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Players',
-                        'action'     => 'index',
+                        'action' => 'search',
                     ),
                 ),
                 'may_terminate' => true,
                 'child_routes' => [
+                    'search' => [
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/search',
+                            'defaults' => [
+                                'action' => 'search',
+                            ],
+                        ],
+                    ],
                     'most-played' => [
                         'type' => 'Zend\Mvc\Router\Http\Literal',
                         'options' => [
@@ -116,9 +125,66 @@ return array(
                     'route'    => '/results',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Results',
-                        'action'     => 'index',
+                        'action' => 'all',
                     ),
                 ),
+                'may_terminate' => true,
+                'child_routes' => [
+                    'all' => [
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/',
+                            'defaults' => [
+                                'action' => 'all',
+                            ],
+                        ],
+                    ],
+                    'friendly' => [
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/friendly',
+                            'defaults' => [
+                                'action' => 'friendly',
+                            ],
+                        ],
+                    ],
+                    'knockout' => [
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/knockout',
+                            'defaults' => [
+                                'action' => 'knockout',
+                            ],
+                        ],
+                    ],
+                    'league' => [
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/league',
+                            'defaults' => [
+                                'action' => 'league',
+                            ],
+                        ],
+                    ],
+                    'add' => [
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/add',
+                            'defaults' => [
+                                'action' => 'add-result',
+                            ],
+                        ],
+                    ],
+                    'my' => [
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/mine',
+                            'defaults' => [
+                                'action' => 'my-results',
+                            ],
+                        ],
+                    ],
+                ],
             ),
             'courts' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',

@@ -14,7 +14,32 @@ use Zend\View\Model\ViewModel;
 
 class ResultsController extends AbstractActionController
 {
-    public function indexAction()
+    public function allAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function friendlyAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function leagueAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function knockoutAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function addResultAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function myResultsAction()
     {
         return new ViewModel();
     }

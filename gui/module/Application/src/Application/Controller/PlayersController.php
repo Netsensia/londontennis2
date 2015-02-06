@@ -14,7 +14,7 @@ use Zend\View\Model\ViewModel;
 
 class PlayersController extends AbstractActionController
 {
-    public function indexAction()
+    public function searchAction()
     {
         return new ViewModel();
     }

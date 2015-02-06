@@ -12,18 +12,7 @@
                       <div class="paper-content">
                         <div class="row">
                             <div class="col-lg-10 col-sm-10 col-sm-offset-1 col-lg-offset-1">
-                                <div class="filters">
-                                     <ul class="nav-tabs nav">
-                                      <li ><a href="results.html">Friendly</a></li>
-                                      <li  ><a href="results.html">League</a></li>
-                                      <li ><a href="results.html">Knockout</a></li>
-                                      <li ><a href="results.html">All Results</a></li>
-                                       <li  ><a href="results-my.html">My Results</a></li>
-                                        <li class="active" ><a href="results-add.html">Add Results</a></li>
-                                      
-
-                                       </ul>
-                                </div>
+                                <?php echo $this->partial('application/results/partials/subnav.phtml'); ?>
                                 
                                 <p class="description">The form below can be used to enter set scores.<br><br>
                                 Incomplete sets may also be recorded and in situations where a tiebreak decider was played INSTEAD of playing a whole set, please enter the set score as 1-0.
