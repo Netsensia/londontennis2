@@ -8,5 +8,5 @@ nbproject
 .settings
 composer.json
 composer.lock
-vendor/bin
+vendor/
 
