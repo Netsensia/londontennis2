@@ -11,9 +11,15 @@
         "php": ">=5.3.3",
         "zendframework/zendframework": "2.3.*"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Netsensia/londontennis-api-client"
+        }
+    ],
     "config":{
-        "github-oauth":{
-   		"github.com":"{{ pillar['londontennis2']['github_oauth'] }}"
+            "github-oauth":{
+   		    "github.com":"{{ pillar['londontennis2']['github_oauth'] }}"
         }
     }
 }

@@ -10,13 +10,17 @@
 namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
 
 class AuthController extends AbstractActionController
 {
     public function loginAction()
     {
+        $username = $this->params()->fromPost('login-name');
+        $password = $this->params()->fromPost('login-password');
+        
         $authService = $this->getServiceLocator()->get('AuthenticationService');
+        $adapter = $authService->getAdapter();
+        $adapter->setCredentials($username, $password);
         $authService->authenticate();
         
         $this->redirect()->toRoute('home');

@@ -7,6 +7,8 @@ use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Select;
 use Zend\Math\Rand;
+use Zend\Cache\Storage\Adapter\AbstractAdapter;
+
 
 class TokenResource extends AbstractResourceListener
 {
@@ -21,14 +23,21 @@ class TokenResource extends AbstractResourceListener
     private $passwordSalt;
     
     /**
+     * @param Zend\Cache\Storage\Adapter\AbstractAdapter
+     */
+    private $cache;
+    
+    /**
      * @param AdapterInterface $connection
      * @param string $passwordSalt
      */
     public function __construct(
         AdapterInterface $adapter,
+        AbstractAdapter $cache,
         $passwordSalt
     )
     {
+        $this->cache = $cache;
         $this->adapter = $adapter;
         $this->passwordSalt = $passwordSalt;        
     }
@@ -50,7 +59,7 @@ class TokenResource extends AbstractResourceListener
                 $select->columns(['userid'])->where(['email' => $email, 'password' => MD5($this->passwordSalt . $password)]);
             }
         )->toArray();
-        
+
         if (count($resultSet) == 1) {
             $token = Rand::getString(64, 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890');
 
@@ -59,6 +68,8 @@ class TokenResource extends AbstractResourceListener
             $tokenEntity->setId($token);
             $tokenEntity->setEmail($email);
             $tokenEntity->setUserId($resultSet[0]['userid']);
+            
+            $this->cache->setItem($token, $tokenEntity);
             
             return $tokenEntity;
         } else {
@@ -96,7 +107,14 @@ class TokenResource extends AbstractResourceListener
      */
     public function fetch($id)
     {
-        return new ApiProblem(405, 'The GET method has not been defined for individual resources');
+        $cacheSuccess = false;
+        $tokenEntity = $this->cache->getItem($id, $cacheSuccess);
+        
+        if ($cacheSuccess) {
+            return $tokenEntity;
+        }
+        
+        return new ApiProblem(404, 'Invalid authorization token');
     }
 
     /**

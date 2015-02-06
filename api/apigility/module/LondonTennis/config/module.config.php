@@ -29,7 +29,9 @@ return array(
             'route_name' => 'london-tennis.rest.token',
             'route_identifier_name' => 'token_id',
             'collection_name' => 'token',
-            'entity_http_methods' => array(),
+            'entity_http_methods' => array(
+                0 => 'GET',
+            ),
             'collection_http_methods' => array(
                 0 => 'POST',
             ),

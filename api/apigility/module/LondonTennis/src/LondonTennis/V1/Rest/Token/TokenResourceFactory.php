@@ -7,6 +7,7 @@ class TokenResourceFactory
     {
         return new TokenResource(
             $services->get('DatabaseAdapter'),
+            $services->get('ZendCache'),
             $services->get('config')['passwordSalt']
         );
     }

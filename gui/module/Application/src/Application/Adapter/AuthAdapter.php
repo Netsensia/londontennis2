@@ -30,7 +30,8 @@ class AuthAdapter implements AdapterInterface
      */
     public function authenticate()
     {
-        $userId = 1;
+        if ($this->username == 'bingo') 
+        $userId = 1; else $userId = null;
         
         if ($userId) {
             $identity = new Identity();
@@ -44,7 +45,7 @@ class AuthAdapter implements AdapterInterface
             $result = new Result(
                 Result::FAILURE,
                 null,
-                [$this->translate('Login failed.  Please try again.')]
+                ['Login failed.  Please try again.']
             );
         }
         
