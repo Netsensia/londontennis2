@@ -14,7 +14,22 @@ use Zend\View\Model\ViewModel;
 
 class CourtsController extends AbstractActionController
 {
-    public function indexAction()
+    public function searchAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function popularAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function profileAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function favouritesAction()
     {
         return new ViewModel();
     }

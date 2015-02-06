@@ -12,15 +12,10 @@
                       <div class="paper-content">
                         <div class="row">
                             <div class="col-lg-10 col-sm-10 col-sm-offset-1 col-lg-offset-1">
-                                <div class="filters">
-                                      <ul class="nav-tabs nav">
-                                      <li class="active"><a href="courts-search.html">Find Court</a></li>
-                                      <li ><a href="courts-popular.html">Most Popular Courts</a></li>
-                                      <li ><a href="courts-search-results.html">My Favourite Courts</a></li>
-                                
 
-                                       </ul>
-                                </div>
+                            
+                            <?php echo $this->partial('application/courts/partials/subnav.phtml'); ?>
+                            
                                 
                                 <p class="description">If entering text below, auto-suggestions will be given based on club name only and are limited to 25 selections. The suggestions are in order of court popularity and do not take account of the other information on this form such as the postcode area. If your court does not appear, please use the Full Search button to do a detailed search of the database which will also search for addresses.</p>
                             </div>

@@ -1,7 +1,5 @@
 <?php
-use Zend\Authentication\AuthenticationService;
-use Application\Adapter\AuthAdapter;
-use LondonTennis\Api\Client\Client;
+
 /**
  * Zend Framework (http://framework.zend.com/)
  *
@@ -19,9 +17,50 @@ return array(
                     'route'    => '/courts',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Courts',
-                        'action'     => 'index',
+                        'action'     => 'search',
                     ),
                 ),
+                'may_terminate' => true,
+                'child_routes' => [
+                    'search' => [
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/search',
+                            'defaults' => [
+                                'action' => 'search',
+                            ],
+                        ],
+                    ],
+                    'popular' => [
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/popular',
+                            'defaults' => [
+                                'action' => 'popular',
+                            ],
+                        ],
+                    ],
+                    'profile' => [
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/profile[/:id]',
+                            'defaults' => [
+                                'action' => 'profile',
+                                'id' => 0,
+                            ],
+                        ],
+                    ],
+                    'favourites' => [
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/favourites',
+                            'defaults' => [
+                                'action' => 'favourites',
+                                'id' => 0,
+                            ],
+                        ],
+                    ],
+                ],
             ),
         ),
     ),
