@@ -18,4 +18,34 @@ class PlayersController extends AbstractActionController
     {
         return new ViewModel();
     }
+    
+    public function mostWinsAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function mostPlayedAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function recentlyPlayedAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function currentlyPlayedAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function topRankedAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function recentJoinersAction()
+    {
+        return new ViewModel();
+    }
 }

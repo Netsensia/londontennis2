@@ -31,6 +31,63 @@ return array(
                         'action'     => 'index',
                     ),
                 ),
+                'may_terminate' => true,
+                'child_routes' => [
+                    'most-played' => [
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/leaderboards/most-played',
+                            'defaults' => [
+                                'action' => 'most-played',
+                            ],
+                        ],
+                    ],
+                    'most-wins' => [
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/leaderboards/most-wins',
+                            'defaults' => [
+                                'action' => 'most-wins',
+                            ],
+                        ],
+                    ],
+                    'top-ranked' => [
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/leaderboards/top-ranked',
+                            'defaults' => [
+                                'action' => 'top-ranked',
+                            ],
+                        ],
+                    ],
+                    'recently-played' => [
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/recently-played',
+                            'defaults' => [
+                                'action' => 'recently-played',
+                            ],
+                        ],
+                    ],
+                    'currently-played' => [
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/currently-played',
+                            'defaults' => [
+                                'action' => 'currently-played',
+                            ],
+                        ],
+                    ],
+                    'recent-joiners' => [
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/recent-joiners',
+                            'defaults' => [
+                                'action' => 'recent-joiners',
+                            ],
+                        ],
+                    ],
+                ],
             ),
             'results' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',

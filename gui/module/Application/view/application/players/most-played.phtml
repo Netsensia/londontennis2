@@ -10,25 +10,8 @@
                       
                      
                       <div class="paper-content">
-                        <div class="row">
-                            <div class="col-lg-10 col-sm-10 col-sm-offset-1 col-lg-offset-1">
-                                <div class="filters">
-                                      <ul class="nav-tabs nav">
-                                      <li ><a href="#search-players">Search Players</a></li>
-                                      <li class="active" ><a href="#most-played">Most Played</a></li>
-                                      <li ><a href="#most-wins">Most Wins</a></li>
-                                      <li ><a href="#recently-played">Recently Played</a></li>
-                                      <li ><a href="#currently-played">Currently Played</a></li>
-                                      <li ><a href="#top-ranked">Top Ranked</a></li>
-                                      <li ><a href="#recent-joiners">Recent Joiners</a></li>
-
-                                       </ul>
-                                </div>
-                                
-                                <p class="description">Click a column to sort by that statistic.List is limited to players with active profiles who have played at least one match.</p>
-                            </div>
-
-                        </div>
+                      
+                        <?php echo $this->partial('application/players/partials/subnav.phtml'); ?>
                         
                         <div class="row">
                             <div class="col-lg-10 col-lg-offset-1">
