@@ -11,6 +11,7 @@ namespace Application;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Zend\Stdlib\ArrayUtils;
 
 class Module
 {
@@ -21,9 +22,31 @@ class Module
         $moduleRouteListener->attach($eventManager);
     }
 
-    public function getConfig()
-    {
-        return include __DIR__ . '/config/module.config.php';
+    public function getConfig(){
+    
+        $configFiles = [
+            __DIR__ . '/config/module.config.php',
+            __DIR__ . '/config/module.routes.home.php',
+            __DIR__ . '/config/module.routes.players.php',
+            __DIR__ . '/config/module.routes.results.php',
+            __DIR__ . '/config/module.routes.competitions.php',
+            __DIR__ . '/config/module.routes.forums.php',
+            __DIR__ . '/config/module.routes.account.php',
+            __DIR__ . '/config/module.routes.directories.php',
+            __DIR__ . '/config/module.routes.courts.php',
+        ];
+    
+        //---
+    
+        $config = array();
+    
+        // Merge all module config options
+        foreach($configFiles as $configFile) {
+            $config = ArrayUtils::merge( $config, include($configFile) );
+        }
+    
+        return $config;
+    
     }
 
     public function getAutoloaderConfig()
