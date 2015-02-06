@@ -2,21 +2,24 @@
     "name": "zendframework/skeleton-application",
     "description": "Skeleton Application for ZF2",
     "license": "BSD-3-Clause",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "keywords": [
         "framework",
         "zf2"
     ],
     "homepage": "http://framework.zend.com/",
-    "require": {
-        "php": ">=5.3.3",
-        "zendframework/zendframework": "2.3.*"
-    },
     "repositories": [
         {
             "type": "vcs",
             "url": "https://github.com/Netsensia/londontennis-api-client"
         }
     ],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "2.3.*",
+        "Netsensia/londontennis-api-client": "dev-master"
+    },
     "config":{
             "github-oauth":{
    		    "github.com":"{{ pillar['londontennis2']['github_oauth'] }}"

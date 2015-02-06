@@ -1,6 +1,7 @@
 <?php
 use Zend\Authentication\AuthenticationService;
 use Application\Adapter\AuthAdapter;
+use LondonTennis\Api\Client\Client;
 /**
  * Zend Framework (http://framework.zend.com/)
  *
@@ -193,6 +194,9 @@ return array(
                 $authService = new AuthenticationService();
                 $authService->setAdapter($adapter);
                 return $authService;
+            },
+            'Api' => function($sm) {
+                return new Client();
             },
         ],
     ),

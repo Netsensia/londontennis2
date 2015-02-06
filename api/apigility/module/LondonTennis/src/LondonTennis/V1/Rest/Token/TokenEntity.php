@@ -8,6 +8,8 @@ class TokenEntity
     private $userId;
     
     private $email;
+    
+    private $username;
         
 	/**
      * @return member variable $userId
@@ -57,12 +59,29 @@ class TokenEntity
         $this->email = $email;
     }
     
+    /**
+     * @return the $username
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param field_type $username
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
+
     public function getArrayCopy()
     {
         return array(
             'id'     => $this->id,
             'email' => $this->email,
             'userId' => $this->userId,
+            'username' => $this->username,
         );
     }
     
@@ -71,7 +90,6 @@ class TokenEntity
         $this->id     = $array['id'];
         $this->email = $array['email'];
         $this->userId = $array['userId'];
+        $this->username = $array['username'];
     }
-    
-
 }

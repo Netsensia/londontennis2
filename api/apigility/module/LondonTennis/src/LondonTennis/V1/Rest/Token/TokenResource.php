@@ -56,7 +56,7 @@ class TokenResource extends AbstractResourceListener
         $userGateway = new TableGateway('user', $this->adapter);
         $resultSet = $userGateway->select(
             function (Select $select) use ($email, $password) {
-                $select->columns(['userid'])->where(['email' => $email, 'password' => MD5($this->passwordSalt . $password)]);
+                $select->columns(['userid', 'name'])->where(['email' => $email, 'password' => MD5($this->passwordSalt . $password)]);
             }
         )->toArray();
 
@@ -67,6 +67,7 @@ class TokenResource extends AbstractResourceListener
 
             $tokenEntity->setId($token);
             $tokenEntity->setEmail($email);
+            $tokenEntity->setUsername($resultSet[0]['name']);
             $tokenEntity->setUserId($resultSet[0]['userid']);
             
             $this->cache->setItem($token, $tokenEntity);

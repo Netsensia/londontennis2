@@ -4,10 +4,11 @@ namespace Application\Adapter;
 use Zend\Authentication\Adapter\AdapterInterface;
 use Zend\Authentication\Result;
 use Application\Model\Identity;
+use LondonTennis\Api\Client\Client;
 
 class AuthAdapter implements AdapterInterface
 {    
-    private $username;
+    private $email;
     
     private $password;
     
@@ -17,11 +18,11 @@ class AuthAdapter implements AdapterInterface
      * @return void
      */
     public function setCredentials(
-        $username,
+        $email,
         $password
     )
     {
-        $this->username = $username;
+        $this->email = $email;
         $this->password = $password;
     }
     
@@ -30,12 +31,14 @@ class AuthAdapter implements AdapterInterface
      */
     public function authenticate()
     {
-        if ($this->username == 'bingo') 
-        $userId = 1; else $userId = null;
+        $api = new Client();
+        $result = $api->authenticate($this->email, $this->password);
         
-        if ($userId) {
+        if ($result !== false) {
+            
             $identity = new Identity();
-            $identity->setUserId($userId);
+            $identity->setUserId($result['userId']);
+            $identity->setUsername($result['username']);
            
             $result = new Result(
                 Result::SUCCESS,
