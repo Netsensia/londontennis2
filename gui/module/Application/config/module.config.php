@@ -11,95 +11,12 @@ use LondonTennis\Api\Client\Client;
  */
 
 return array(
-    'router' => array(
-        'routes' => array(
-            'home' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Index',
-                        'action'     => 'index',
-                    ),
-                ),
-            ),
-            'login' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/login',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Auth',
-                        'action'     => 'login',
-                    ),
-                ),
-            ),
-            'logout' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/logout',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Auth',
-                        'action'     => 'logout',
-                    ),
-                ),
-            ),
-            'courts' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/courts',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Courts',
-                        'action'     => 'index',
-                    ),
-                ),
-            ),
-            'competitions' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/competitions',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Competitions',
-                        'action'     => 'index',
-                    ),
-                ),
-            ),
-            'forums' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/forums',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Forums',
-                        'action'     => 'index',
-                    ),
-                ),
-            ),
-            'myaccount' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/myaccount',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\MyAccount',
-                        'action'     => 'index',
-                    ),
-                ),
-            ),
-            'directories' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/directories',
-                    'defaults' => array(
-                        'controller' => 'Application\Controller\Directories',
-                        'action'     => 'index',
-                    ),
-                ),
-            ),
-        ),
-    ),
-
+    
     'view_helpers' => [
         'invokables' => [
             'routeName'  => 'Application\View\Helper\RouteName',
             'jumboClass' => 'Application\View\Helper\JumboClass',
+            'menuOption' => 'Application\View\Helper\MenuOption',
         ],
     ],
     

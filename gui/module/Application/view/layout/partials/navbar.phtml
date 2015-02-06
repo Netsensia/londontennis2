@@ -3,7 +3,7 @@
      
       <div class="container">
       
-<?php if ($user = $this->identity()) : ?>
+<?php if ($this->identity()) : ?>
     <?php echo $this->partial('layout/partials/loggedin.phtml'); ?>
 <?php else: ?>
     <?php echo $this->partial('layout/partials/loggedout.phtml'); ?>
@@ -51,14 +51,14 @@
            
               <!--  navigation list , class "active" is added to the active page  -->
             <ul class="nav navbar-nav">
-                <li class="active" ><a href="<? echo $this->url('home'); ?>">Home</a></li>
-                <li  ><a href="<? echo $this->url('players'); ?>">Players</a></li>
-                <li ><a href="<? echo $this->url('results'); ?>">Results</a></li>
-                <li  ><a href="<? echo $this->url('courts'); ?>">Courts</a></li>
-                <li ><a href="<? echo $this->url('competitions'); ?>">Competitions</a></li>
-                <li ><a href="<? echo $this->url('forums'); ?>">Forums</a></li>
-                <li ><a href="<? echo $this->url('myaccount'); ?>">My Account</a></li>
-                <li ><a href="<? echo $this->url('directories'); ?>">Directories</a></li>    
+                <?php echo $this->menuOption('home', 'Home', 'active'); ?>
+                <?php echo $this->menuOption('players', 'Players', 'active'); ?>
+                <?php echo $this->menuOption('results', 'Results', 'active'); ?>
+                <?php echo $this->menuOption('courts', 'Courts', 'active'); ?>
+                <?php echo $this->menuOption('competitions', 'Competitions', 'active'); ?>
+                <?php echo $this->menuOption('forums', 'Forums', 'active'); ?>
+                <?php echo $this->menuOption('myaccount', 'My Account', 'active'); ?>
+                <?php echo $this->menuOption('directories', 'Directories', 'active'); ?>
             </ul>
              
         
