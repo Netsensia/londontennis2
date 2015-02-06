@@ -19,9 +19,40 @@ return array(
                     'route'    => '/competitions',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Competitions',
-                        'action'     => 'index',
+                        'action'     => 'current',
                     ),
                 ),
+                'may_terminate' => true,
+                'child_routes' => [
+                    'current' => [
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/current',
+                            'defaults' => [
+                                'action' => 'current',
+                            ],
+                        ],
+                    ],
+                    'previous' => [
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/previous',
+                            'defaults' => [
+                                'action' => 'previous',
+                            ],
+                        ],
+                    ],
+                    'ko' => [
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/ko',
+                            'defaults' => [
+                                'action' => 'ko',
+                                'id' => 0,
+                            ],
+                        ],
+                    ],
+                ],
             ),
         ),
     ),

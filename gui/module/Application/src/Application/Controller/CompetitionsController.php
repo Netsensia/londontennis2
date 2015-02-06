@@ -14,7 +14,17 @@ use Zend\View\Model\ViewModel;
 
 class CompetitionsController extends AbstractActionController
 {
-    public function indexAction()
+    public function currentAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function previousAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function koAction()
     {
         return new ViewModel();
     }

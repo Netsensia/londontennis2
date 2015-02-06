@@ -12,29 +12,38 @@
                       <div class="paper-content">
                         <div class="row">
                             <div class="col-lg-10 col-sm-10 col-sm-offset-1 col-lg-offset-1">
-                                <div class="filters">
-                                       <ul class="nav-tabs nav">
-                                      
-                                      
-                                     <li  class="active"  ><a href="competition-ko-current.html">Current Draws</a></li>
-                                      <li ><a href="competition-ko-sign.html">Previous Draws</a></li>
-                                      <li ><a href="competition-ko-sign.html">KO Info &amp; Sign-up</a></li>
-                                        
-                                       
-
-                                       </ul>
-                                </div>
+                                <?php echo $this->partial('application/competitions/partials/subnav.phtml'); ?>
                                 
-                                <p class="description">The London Tennis Knockout is now our only competition, but it has been made a triannual event, with our next tournament starting 16 February 2015 offering Ladies' and Men's events to players from 16 years.
-
-Trophies and prize money of up to £200 for the winner of the main draw, plus new consolation draws giving a second chance to win prize money and the chance to play in a final at the National Tennis Centre.
-
-Sign up <a href="#ko-signup">here</a> </p>
+                              
                             </div>
 
                         </div>
                         
+                        <div class="row league-select">
+                            <div class="col-lg-10 col-lg-offset-1">
+                                
 
+    
+     <div class="col-lg-4 col-lg-offset-4 ko-opt">
+    <select name="areaid" class="form-control ">
+    <option value="-1">Summer 2010</option>
+     <option value="0">Summer 2014</option>
+     <option value="0">Winter 2014</option>
+     <option value="0">Spring 2014</option>
+     <option value="0">Winter 2014</option>
+     <option value="0">Autumn 2013</option>
+     <option value="0">Summer 2013</option>
+     
+     
+
+   </select>
+     </div>
+     
+  
+                                
+                            </div>
+                            
+                        </div>
                         
                         
                         
@@ -51,8 +60,23 @@ Sign up <a href="#ko-signup">here</a> </p>
           
     
                           <div class="col-lg-10 col-lg-offset-1 ">
+                                 
+                                 
+                                 
+                                  <!--   Ko image , automaticaly scaled to 100% width of the container -->
+                                 
+                                 <div class="ko-images">
+                                     <img src="/img/group_2.jpg" alt="">
+                                     
+                                 </div>
+                                 
+                                  
+                              <!--   Ko description   -->
                                   
                                   
+                                    <p class="description">The finals of the London Tennis 2011 Summer Knockout Tournament were staged at the heart of British professional tennis, the <a href="http://www.lta.org.uk/About-Us/National-Tennis-Centre/">National Tennis Centre</a> on Sunday 19th September 2010.<br><br>
+The Mens' final was postponed due to one of the finalists being unavailable, while in the Ladies' final, James Linney (<a href="http://www.londontennis.co.uk/ko/index.php?srcm=4#">linney13</a>) beat Antonio Agresta (<a href="http://www.londontennis.co.uk/ko/index.php?srcm=4#">agre07</a>) 6-4 7-5.<br><br>
+Many thanks to the umpire, Tim Pearce, and to the photographer of those amazing photos, Derek Linney, (<a href="http://www.takebetterpictures.co.uk">www.takebetterpictures.co.uk</a>). Derek is James' father.</p>
                                   
                                    <div class="division-name">
                                   <p>The 2014 London Tennis Summer Knockout Finals</p>
