@@ -175,7 +175,8 @@ return array(
 
     'view_helpers' => [
         'invokables' => [
-            'routeName'         => 'Application\View\Helper\RouteName',
+            'routeName'  => 'Application\View\Helper\RouteName',
+            'jumboClass' => 'Application\View\Helper\JumboClass',
         ],
     ],
     
