@@ -17,6 +17,7 @@ return array(
             'routeName'  => 'Application\View\Helper\RouteName',
             'jumboClass' => 'Application\View\Helper\JumboClass',
             'menuOption' => 'Application\View\Helper\MenuOption',
+            'subMenuOption' => 'Application\View\Helper\SubMenuOption',
         ],
     ],
     

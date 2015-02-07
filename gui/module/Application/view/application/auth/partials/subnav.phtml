@@ -1,9 +1,7 @@
-                                <div class="filters">
-                                      <ul class="nav-tabs nav">
-                                      <li ><a href="<?php echo $this->url('join'); ?>">Create Account</a></li>
-                                      <li class="active" ><a href="<?php echo $this->url('login'); ?>">Login</a></li>
-                                      <li ><a href="<?php echo $this->url('password-reset'); ?>">Password Reset</a></li>
-                              
-
-                                       </ul>
-                                </div>
+<div class="filters">
+    <ul class="nav-tabs nav">
+        <?php echo $this->subMenuOption('join', 'Create Account', 'active'); ?>
+        <?php echo $this->subMenuOption('login', 'Login', 'active'); ?>
+        <?php echo $this->subMenuOption('password-reset', 'Password Reset', 'active'); ?>
+    </ul>
+</div>
