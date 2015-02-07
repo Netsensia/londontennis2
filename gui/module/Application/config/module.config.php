@@ -15,6 +15,7 @@ return array(
     'view_helpers' => [
         'invokables' => [
             'routeName'  => 'Application\View\Helper\RouteName',
+            'routeParams'  => 'Application\View\Helper\RouteParams',
             'jumboClass' => 'Application\View\Helper\JumboClass',
             'menuOption' => 'Application\View\Helper\MenuOption',
             'subMenuOption' => 'Application\View\Helper\SubMenuOption',

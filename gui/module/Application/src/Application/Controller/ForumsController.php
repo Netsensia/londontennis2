@@ -14,6 +14,7 @@ use Zend\View\Model\ViewModel;
 
 class ForumsController extends AbstractActionController
 {
+    
     public function listAction()
     {
         return new ViewModel();

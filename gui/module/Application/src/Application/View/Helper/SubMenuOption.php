@@ -5,16 +5,20 @@ use Zend\View\Helper\AbstractHelper;
 
 class SubMenuOption extends AbstractHelper
 {
-    public function __invoke($route, $label, $activeClass, $inactiveClass='')
+    public function __invoke($route, $label, $activeClass, $params = [])
     {
         $routeName = $this->view->routeName();
+        $routeParams = $this->view->routeParams();
         
-        if ($routeName == $route) {
+        unset($routeParams['controller']);
+        unset($routeParams['action']);
+                
+        if ($routeName == $route && $routeParams == $params) {
             $class = $activeClass;
         } else {
-            $class = $inactiveClass;
+            $class = '';
         }
         
-        echo '<li class="' . $class . '"><a href="' . $this->view->url($route) . '">' . $label . '</a></li>';
+        echo '<li class="' . $class . '"><a href="' . $this->view->url($route, $params) . '">' . $label . '</a></li>';
     }
 }

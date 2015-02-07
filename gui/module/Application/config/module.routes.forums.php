@@ -26,6 +26,7 @@ return array(
                         'type' => 'Zend\Mvc\Router\Http\Segment',
                         'options' => [
                             'route' => '[/:forumid]',
+                            'constraints' => ['forumid' => '[0-9]*'],
                             'defaults' => [
                                 'action' => 'view-forum',
                             ],
@@ -35,6 +36,7 @@ return array(
                         'type' => 'Zend\Mvc\Router\Http\Literal',
                         'options' => [
                             'route' => '/new-thread[/:forumid]',
+                            'constraints' => ['forumid' => '[0-9]*'],
                             'defaults' => [
                                 'action' => 'new-thread',
                             ],
@@ -44,6 +46,7 @@ return array(
                         'type' => 'Zend\Mvc\Router\Http\Literal',
                         'options' => [
                             'route' => '/view-thread[/:threadid]',
+                            'constraints' => ['threadid' => '[0-9]*'],
                             'defaults' => [
                                 'action' => 'view-thread',
                                 'id' => 0,
