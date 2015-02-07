@@ -14,6 +14,11 @@ use Zend\View\Model\ViewModel;
 
 class PlayersController extends AbstractActionController
 {
+    public function indexAction()
+    {
+        $this->redirect()->toRoute('players/search');    
+    }
+    
     public function searchAction()
     {
         return new ViewModel();
@@ -34,7 +39,7 @@ class PlayersController extends AbstractActionController
         return new ViewModel();
     }
     
-    public function currentlyPlayedAction()
+    public function currentlyOnlineAction()
     {
         return new ViewModel();
     }

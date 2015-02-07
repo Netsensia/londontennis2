@@ -1,9 +1,9 @@
                                 <div class="filters">
                                       <ul class="nav-tabs nav">
-                                      <li class="active"><a href="<?php echo $this->url('courts/search'); ?>">Find Court</a></li>
-                                      <li ><a href="<?php echo $this->url('courts/popular'); ?>">Most Popular Courts</a></li>
-                                      <li ><a href="<?php echo $this->url('courts/favourites'); ?>">My Favourite Courts</a></li>
-                                
-
+                                      
+                                      <?php echo $this->subMenuOption('courts/search', 'Find Court', 'active'); ?>
+                                      <?php echo $this->subMenuOption('courts/popular', 'Most Popular Courts', 'active'); ?>
+                                      <?php echo $this->subMenuOption('courts/favourites', 'My Favourite Courts', 'active'); ?>
+                    
                                        </ul>
                                 </div>

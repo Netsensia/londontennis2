@@ -14,6 +14,12 @@ use Zend\View\Model\ViewModel;
 
 class CompetitionsController extends AbstractActionController
 {
+
+    public function indexAction()
+    {
+        $this->redirect()->toRoute('competitions/current');        
+    }
+    
     public function currentAction()
     {
         return new ViewModel();

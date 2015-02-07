@@ -19,7 +19,7 @@ return array(
                     'route'    => '/results',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Results',
-                        'action' => 'all',
+                        'action' => 'index',
                     ),
                 ),
                 'may_terminate' => true,

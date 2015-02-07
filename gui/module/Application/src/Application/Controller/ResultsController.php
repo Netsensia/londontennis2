@@ -14,6 +14,11 @@ use Zend\View\Model\ViewModel;
 
 class ResultsController extends AbstractActionController
 {
+    public function indexAction()
+    {
+        $this->redirect()->toRoute('results/all');    
+    }
+    
     public function allAction()
     {
         return new ViewModel();

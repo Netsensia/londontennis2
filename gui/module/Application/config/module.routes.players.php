@@ -19,7 +19,7 @@ return array(
                     'route'    => '/players',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Players',
-                        'action' => 'search',
+                        'action' => 'index',
                     ),
                 ),
                 'may_terminate' => true,
@@ -69,12 +69,12 @@ return array(
                             ],
                         ],
                     ],
-                    'currently-played' => [
+                    'currently-online' => [
                         'type' => 'Zend\Mvc\Router\Http\Literal',
                         'options' => [
-                            'route' => '/currently-played',
+                            'route' => '/currently-online',
                             'defaults' => [
-                                'action' => 'currently-played',
+                                'action' => 'currently-online',
                             ],
                         ],
                     ],

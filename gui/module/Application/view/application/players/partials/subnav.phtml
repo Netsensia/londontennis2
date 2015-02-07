@@ -1,12 +1,14 @@
 
         <div class="filters">
           <ul class="nav-tabs nav">
-              <li class="active"><a href="<?php echo $this->url('players'); ?>">Search Players</a></li>
-              <li ><a href="<?php echo $this->url('players/most-played'); ?>">Most Played</a></li>
-              <li ><a href="<?php echo $this->url('players/most-wins'); ?>">Most Wins</a></li>
-              <li ><a href="<?php echo $this->url('players/recently-played'); ?>">Recently Played</a></li>
-              <li ><a href="<?php echo $this->url('players/currently-played'); ?>">Currently Played</a></li>
-              <li ><a href="<?php echo $this->url('players/top-ranked'); ?>">Top Ranked</a></li>
-              <li ><a href="<?php echo $this->url('players/recent-joiners'); ?>">Recent Joiners</a></li>
+          
+          <?php echo $this->subMenuOption('players/search', 'Search', 'active'); ?>
+          <?php echo $this->subMenuOption('players/most-played', 'Most Played', 'active'); ?>
+          <?php echo $this->subMenuOption('players/most-wins', 'Most Wins', 'active'); ?>
+          <?php echo $this->subMenuOption('players/recently-played', 'Recently Played', 'active'); ?>
+          <?php echo $this->subMenuOption('players/currently-online', 'Currently Online', 'active'); ?>
+          <?php echo $this->subMenuOption('players/top-ranked', 'Top Ranked', 'active'); ?>
+          <?php echo $this->subMenuOption('players/recent-joiners', 'Recent Joiners', 'active'); ?>
+
           </ul>
        </div>

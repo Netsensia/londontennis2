@@ -14,6 +14,11 @@ use Zend\View\Model\ViewModel;
 
 class CourtsController extends AbstractActionController
 {
+    public function indexAction()
+    {
+        $this->redirect()->toRoute('courts/search');    
+    }
+    
     public function searchAction()
     {
         return new ViewModel();

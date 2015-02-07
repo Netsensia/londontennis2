@@ -17,7 +17,7 @@ return array(
                     'route'    => '/courts',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Courts',
-                        'action'     => 'search',
+                        'action'     => 'index',
                     ),
                 ),
                 'may_terminate' => true,

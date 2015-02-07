@@ -1,12 +1,10 @@
 <div class="filters">
                                        <ul class="nav-tabs nav">
                                       
-                                      
-                                     <li  class="active"  ><a href="<?php echo $this->url('competitions/current'); ?>">Current Draws</a></li>
-                                      <li ><a href="<?php echo $this->url('competitions/previous'); ?>">Previous Draws</a></li>
-                                      <li ><a href="<?php echo $this->url('competitions/ko'); ?>">KO Info &amp; Sign-up</a></li>
-                                        
-                                       
+                                      <?php echo $this->subMenuOption('competitions/current', 'Current Draws', 'active'); ?>
+                                      <?php echo $this->subMenuOption('competitions/previous', 'Previous Draws', 'active'); ?>
+                                      <?php echo $this->subMenuOption('competitions/ko', 'KO Info &amp; Sign-up', 'active'); ?>
+
 
                                        </ul>
                                 </div>

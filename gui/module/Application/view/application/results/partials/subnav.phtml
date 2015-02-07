@@ -1,12 +1,13 @@
 
         <div class="filters">
               <ul class="nav-tabs nav">
-              <li class="active" ><a href="<?php echo $this->url('results/friendly'); ?>">Friendly</a></li>
-              <li  ><a href="<?php echo $this->url('results/league'); ?>">League</a></li>
-              <li ><a href="<?php echo $this->url('results/knockout'); ?>">Knockout</a></li>
-              <li ><a href="<?php echo $this->url('results/all'); ?>">All Results</a></li>
-               <li ><a href="<?php echo $this->url('results/my'); ?>">My Results</a></li>
-                <li ><a href="<?php echo $this->url('results/add'); ?>">Add Results</a></li>
+              <?php echo $this->subMenuOption('results/friendly', 'Friendly', 'active'); ?>
+              <?php echo $this->subMenuOption('results/league', 'League', 'active'); ?>
+              <?php echo $this->subMenuOption('results/knockout', 'Knockout', 'active'); ?>
+              <?php echo $this->subMenuOption('results/all', 'All Results', 'active'); ?>
+              <?php echo $this->subMenuOption('results/my', 'My Results', 'active'); ?>
+              <?php echo $this->subMenuOption('results/add', 'Add Results', 'active'); ?>
+
               
 
                </ul>

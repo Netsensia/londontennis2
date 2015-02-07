@@ -1,7 +1,5 @@
 <?php
-use Zend\Authentication\AuthenticationService;
-use Application\Adapter\AuthAdapter;
-use LondonTennis\Api\Client\Client;
+
 /**
  * Zend Framework (http://framework.zend.com/)
  *
@@ -19,7 +17,7 @@ return array(
                     'route'    => '/competitions',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Competitions',
-                        'action'     => 'current',
+                        'action'     => 'index',
                     ),
                 ),
                 'may_terminate' => true,
