@@ -1,7 +1,5 @@
 <?php
-use Zend\Authentication\AuthenticationService;
-use Application\Adapter\AuthAdapter;
-use LondonTennis\Api\Client\Client;
+
 /**
  * Zend Framework (http://framework.zend.com/)
  *
@@ -20,6 +18,26 @@ return array(
                     'defaults' => array(
                         'controller' => 'Application\Controller\Index',
                         'action'     => 'index',
+                    ),
+                ),
+            ),
+            'join' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/join',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Auth',
+                        'action'     => 'join',
+                    ),
+                ),
+            ),
+            'password-reset' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/password-reset',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Auth',
+                        'action'     => 'password-reset',
                     ),
                 ),
             ),

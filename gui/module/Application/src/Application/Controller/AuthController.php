@@ -23,7 +23,9 @@ class AuthController extends AbstractActionController
         $adapter->setCredentials($username, $password);
         $authService->authenticate();
         
-        $this->redirect()->toRoute('home');
+        if ($authService->hasIdentity()) {
+            $this->redirect()->toRoute('home');
+        }
     }
     
     public function logoutAction()
@@ -32,5 +34,15 @@ class AuthController extends AbstractActionController
         $authService->clearIdentity();
         
         $this->redirect()->toRoute('home');
+    }
+    
+    public function passwordResetAction()
+    {
+        
+    }
+    
+    public function joinAction()
+    {
+    
     }
 }
