@@ -1,7 +1,5 @@
 <?php
-use Zend\Authentication\AuthenticationService;
-use Application\Adapter\AuthAdapter;
-use LondonTennis\Api\Client\Client;
+
 /**
  * Zend Framework (http://framework.zend.com/)
  *
@@ -19,9 +17,50 @@ return array(
                     'route'    => '/forums',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Forums',
-                        'action'     => 'index',
+                        'action'     => 'list',
                     ),
                 ),
+                'may_terminate' => true,
+                'child_routes' => [
+                    'view-forum' => [
+                        'type' => 'Zend\Mvc\Router\Http\Segment',
+                        'options' => [
+                            'route' => '[/:forumid]',
+                            'defaults' => [
+                                'action' => 'view-forum',
+                            ],
+                        ],
+                    ],
+                    'new-thread' => [
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/new-thread[/:forumid]',
+                            'defaults' => [
+                                'action' => 'new-thread',
+                            ],
+                        ],
+                    ],
+                    'view-thread' => [
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/view-thread[/:threadid]',
+                            'defaults' => [
+                                'action' => 'view-thread',
+                                'id' => 0,
+                            ],
+                        ],
+                    ],
+                    'reply' => [
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => [
+                            'route' => '/reply[/:postid]',
+                            'defaults' => [
+                                'action' => 'reply',
+                                'id' => 0,
+                            ],
+                        ],
+                    ],
+                ],
             ),
         ),
     ),
