@@ -31,35 +31,40 @@ return array(
                                 'action' => 'view-forum',
                             ],
                         ],
-                    ],
-                    'new-thread' => [
-                        'type' => 'Zend\Mvc\Router\Http\Literal',
-                        'options' => [
-                            'route' => '/new-thread[/:forumid]',
-                            'constraints' => ['forumid' => '[0-9]*'],
-                            'defaults' => [
-                                'action' => 'new-thread',
+                        'may_terminate' => true,
+                        'child_routes' => [
+                            'new-thread' => [
+                                'type' => 'Zend\Mvc\Router\Http\Literal',
+                                'options' => [
+                                    'route' => '/new-thread',
+                                    'defaults' => [
+                                        'action' => 'new-thread',
+                                    ],
+                                ],
                             ],
-                        ],
-                    ],
-                    'view-thread' => [
-                        'type' => 'Zend\Mvc\Router\Http\Literal',
-                        'options' => [
-                            'route' => '/view-thread[/:threadid]',
-                            'constraints' => ['threadid' => '[0-9]*'],
-                            'defaults' => [
-                                'action' => 'view-thread',
-                                'id' => 0,
-                            ],
-                        ],
-                    ],
-                    'reply' => [
-                        'type' => 'Zend\Mvc\Router\Http\Literal',
-                        'options' => [
-                            'route' => '/reply[/:postid]',
-                            'defaults' => [
-                                'action' => 'reply',
-                                'id' => 0,
+                            'view-thread' => [
+                                'type' => 'Zend\Mvc\Router\Http\Segment',
+                                'options' => [
+                                    'route' => '/view-thread[/:threadid]',
+                                    'constraints' => ['threadid' => '[0-9]*'],
+                                    'defaults' => [
+                                        'action' => 'view-thread',
+                                        'id' => 0,
+                                    ],
+                                ],
+                                'may_terminate' => true,
+                                'child_routes' => [
+                                    'reply' => [
+                                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                                        'options' => [
+                                            'route' => '/reply',
+                                            'defaults' => [
+                                                'action' => 'reply',
+                                                'id' => 0,
+                                            ],
+                                        ],
+                                    ],
+                                ],
                             ],
                         ],
                     ],
