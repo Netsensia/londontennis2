@@ -12,19 +12,7 @@
                       <div class="paper-content">
                         <div class="row">
                             <div class="col-lg-10 col-sm-10 col-sm-offset-1 col-lg-offset-1">
-                                <div class="filters">
-                                     <ul class="nav-tabs nav">
-                                      <li   ><a href="my-account.html">My Dashboard</a></li>
-                                      <li   ><a href="my-account-inbox.html">My Inbox</a></li>
-                                      <li ><a href="my-account-settings.html">My Settings</a></li>
-                                      <li  ><a href="my-account-friends.html">My Friends</a></li>
-                                      <li   ><a href="my-accounts-block-list.html">My Block List</a></li>
-                                      <li  ><a href="my-account-courts.html">My Courts</a></li>
-                                      <li  class="active" ><a href="my-account-calendar.html">My Calendar</a></li>
-                                      <li ><a href="my-account-entires.html">My Entires</a></li>
-
-                                       </ul>
-                                </div>
+                                <?php echo $this->partial('application/my-account/partials/subnav.phtml');?>
                                 
                                 <hr>
                             </div>

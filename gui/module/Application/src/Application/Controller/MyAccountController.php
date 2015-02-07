@@ -14,7 +14,52 @@ use Zend\View\Model\ViewModel;
 
 class MyAccountController extends AbstractActionController
 {
-    public function indexAction()
+    public function dashboardAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function inboxAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function viewMessageAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function sendMessageAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function sentMessagesAction()
+    {
+        return new ViewModel();
+    }
+
+    public function settingsAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function friendsAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function blockListAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function calendarAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function entriesAction()
     {
         return new ViewModel();
     }
