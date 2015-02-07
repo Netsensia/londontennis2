@@ -3,9 +3,23 @@ namespace LondonTennis;
 
 use ZF\Apigility\Provider\ApigilityProviderInterface;
 use Zend\Db\Adapter\Adapter;
+use Zend\Mvc\MvcEvent;
+use Zend\Mvc\ModuleRouteListener;
+use Application\Event\AuthListener;
 
 class Module implements ApigilityProviderInterface
 {
+    public function onBootstrap(MvcEvent $event)
+    {
+        $eventManager = $event->getApplication()->getEventManager();
+    
+        $moduleRouteListener = new ModuleRouteListener();
+        $moduleRouteListener->attach($eventManager);
+    
+        $authListener = new AuthListener();
+        $authListener->attach($eventManager);
+    }
+    
     public function getConfig()
     {
         return include __DIR__ . '/../../config/module.config.php';
