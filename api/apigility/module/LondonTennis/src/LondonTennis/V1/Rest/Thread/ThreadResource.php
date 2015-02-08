@@ -89,8 +89,17 @@ class ThreadResource extends AbstractResourceListener
         $resultSet = $gateway->select(
             function (Select $select) use ($forumId) {
                 $select
-                    ->columns(['id' => 'threadid', 'subject' => 'threadsubject', 'content' => 'threaddescription', 'creatorId' => 'threadcreatorid'])
-                    ->join('user', 'threadcreatorid = user.userid', ['posterName' => 'name'], 'left')
+                    ->columns([
+                        'id' => 'threadid',
+                        'subject' => 'threadsubject',
+                        'postCount' => 'threadpostcount',
+                        'content' => 'threaddescription',
+                        'lastPosterId' => 'threadlastposterid',
+                        'lastPostTime' => 'threadlastpostdate',
+                        'creatorId' => 'threadcreatorid'
+                    ])
+                    ->join(['a' => 'user'], 'threadcreatorid = a.userid', ['creatorName' => 'name'], 'left')
+                    ->join(['b' => 'user'], 'threadlastposterid = b.userid', ['lastPosterName' => 'name'], 'left')
                     ->where(['threadforumid' => $forumId, 'threadishidden' => 'N']);
             }
         )->toArray();

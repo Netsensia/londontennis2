@@ -52,10 +52,10 @@
                                                 <?php echo $thread['subject']; ?>
                                               </a>
                                           </td>
-                                          <td>22</td>
-                                          <td><a class="forum-date" href="#last-post">11 Jan '15 20:23</a></td>
-                                          <td><a href="#post-creator">casper88</a></td>
-                                          <td><a href="#last-poster">thomas323</a></td>
+                                          <td><?php echo $thread['postCount']; ?></td>
+                                          <td><a class="forum-date" href="#last-post"><?php echo $thread['lastPostTime']; ?></a></td>
+                                          <td><a href="#post-creator"><?php echo $thread['creatorName']; ?></a></td>
+                                          <td><a href="#last-poster"><?php echo $thread['lastPosterName']; ?></a></td>
                                           
                                       </tr>
                                       

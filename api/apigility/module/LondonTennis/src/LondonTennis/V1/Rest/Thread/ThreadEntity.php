@@ -11,22 +11,112 @@ class ThreadEntity
     
     private $content;
     
-    private $posterName;
+    private $creatorName;
+    
+    private $lastPostTime;
+    
+    private $creatorName;
+    
+    private $lastPosterId;
+    
+    private $lastPosterName;
+    
+    private $postCount;
     
     /**
-     * @return the $posterName
+     * @return the $postCount
      */
-    public function getPosterName()
+    public function getPostCount()
     {
-        return $this->posterName;
+        return $this->postCount;
     }
 
     /**
-     * @param field_type $posterName
+     * @param field_type $postCount
      */
-    public function setPosterName($posterName)
+    public function setPostCount($postCount)
     {
-        $this->posterName = $posterName;
+        $this->postCount = $postCount;
+    }
+
+    /**
+     * @return the $lastPostTime
+     */
+    public function getLastPostTime()
+    {
+        return $this->lastPostTime;
+    }
+
+    /**
+     * @param field_type $lastPostTime
+     */
+    public function setLastPostTime($lastPostTime)
+    {
+        $this->lastPostTime = $lastPostTime;
+    }
+
+    /**
+     * @return the $creatorName
+     */
+    public function getCreatorName()
+    {
+        return $this->creatorName;
+    }
+
+    /**
+     * @param field_type $creatorName
+     */
+    public function setCreatorName($creatorName)
+    {
+        $this->creatorName = $creatorName;
+    }
+
+    /**
+     * @return the $lastPosterId
+     */
+    public function getLastPosterId()
+    {
+        return $this->lastPosterId;
+    }
+
+    /**
+     * @param field_type $lastPosterId
+     */
+    public function setLastPosterId($lastPosterId)
+    {
+        $this->lastPosterId = $lastPosterId;
+    }
+
+    /**
+     * @return the $lastPosterName
+     */
+    public function getLastPosterName()
+    {
+        return $this->lastPosterName;
+    }
+
+    /**
+     * @param field_type $lastPosterName
+     */
+    public function setLastPosterName($lastPosterName)
+    {
+        $this->lastPosterName = $lastPosterName;
+    }
+
+    /**
+     * @return the $creatorName
+     */
+    public function getCreatorName()
+    {
+        return $this->creatorName;
+    }
+
+    /**
+     * @param field_type $creatorName
+     */
+    public function setCreatorName($creatorName)
+    {
+        $this->creatorName = $creatorName;
     }
 
     /**
