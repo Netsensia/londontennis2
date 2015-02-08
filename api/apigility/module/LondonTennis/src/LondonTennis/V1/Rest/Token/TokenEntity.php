@@ -77,19 +77,13 @@ class TokenEntity
 
     public function getArrayCopy()
     {
-        return array(
-            'id'     => $this->id,
-            'email' => $this->email,
-            'userId' => $this->userId,
-            'username' => $this->username,
-        );
+        return get_object_vars($this);
     }
     
     public function exchangeArray(array $array)
     {
-        $this->id     = $array['id'];
-        $this->email = $array['email'];
-        $this->userId = $array['userId'];
-        $this->username = $array['username'];
+        foreach ($array as $key => $value) {
+            $this->$key = $value;
+        }
     }
 }
