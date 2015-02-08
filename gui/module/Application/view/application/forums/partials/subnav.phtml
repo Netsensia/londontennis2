@@ -2,10 +2,11 @@
 <ul class="nav-tabs nav">
 
 <?php echo $this->subMenuOption('forums', 'Forum List', 'active'); ?>
-<?php echo $this->subMenuOption('forums/view-forum', 'General Chat', 'active', ['forumid' => 1]); ?>
-<?php echo $this->subMenuOption('forums/view-forum', 'Meet Opponenets', 'active', ['forumid' => 2]); ?>
-<?php echo $this->subMenuOption('forums/view-forum', 'Site Comments &amp; Feedback', 'active', ['forumid' => 3]); ?>
-<?php echo $this->subMenuOption('forums/view-forum', 'Equipment for Sale', 'active', ['forumid' => 4]); ?>
+
+<?php foreach ($this->forums as $forum): ?>
+                                        <?php echo $this->subMenuOption('forums/view-forum', $forum['forumname'], 'active', ['forumid' => $forum['forumid']]); ?>
+
+                                        <?php endforeach; ?>
 
                                        </ul>
                                        </div>

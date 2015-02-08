@@ -36,38 +36,20 @@
                                     </thead>
                                     
                                     <tbody>
+                                    
+                                        <?php foreach ($this->forums as $forum): ?>
                                         <tr class="forum-row">
                                             <td class="image-td"><img class="forum-ball" src="img/ball2.png" alt=""></td>
-                                            <td><a href="forum-general-chat.html">General</a> <br>General Discussion.</td>
-                                            <td class="forum-date">11 Jan '15 20:23</td>
+                                            <td>
+                                                <a href="<?php echo $this->url('forums/view-forum', ['forumid' => $forum['forumid']]); ?>">
+                                                    <?php echo $forum['forumname']; ?>
+                                                </a>
+                                            <br>
+                                            <?php echo $forum['forumdesc']; ?></td>
+                                            <td class="forum-date"><?php echo $forum['forumlastpostdate']; ?></td>
                                             
                                         </tr>
-                                        
-                                        
-                                        <tr class="forum-row">
-                                            <td class="image-td"><img src="img/ball2.png" alt=""></td>
-                                            <td><a href="forum-general-chat.html">Meet Opponenets</a> <br>Use this forum to meet your perfect tennis partners!</td>
-                                            <td class="forum-date">11 Jan '15 20:23</td>
-                                            
-                                        </tr>
-                                        
-                                        <tr class="forum-row">
-                                            <td class="image-td"><img src="img/ball2.png" alt=""></td>
-                                            <td><a href="forum-general-chat.html">Site Feedback, Ideas and Comments</a> <br>Use this forum to recommend features for the site or to make comments on existing features.</td>
-                                            <td class="forum-date">11 Jan '15 20:23</td>
-                                            
-                                        </tr>
-                                        
-                                        <tr class="forum-row">
-                                            <td class="image-td"><img src="img/ball2.png" alt=""></td>
-                                            <td><a href="forum-general-chat.html">Equipment For Sale</a> <br>If your post relates to the sale of some tennis equipment, please put it here.<br>
-Please note that London Tennis cannot be responsible for any deals struck on this forum!</td>
-                                            <td class="forum-date">11 Jan '15 20:23</td>
-                                            
-                                        </tr>
-                                        
-                                        
-                                        
+                                        <?php endforeach; ?>
                                         
                                         
                                     </tbody>

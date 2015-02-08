@@ -16,7 +16,9 @@ class ForumsController extends ApiAwareController
     public function listAction()
     {
         $forumList = $this->api()->getForumList();
-        return new ViewModel();
+        return new ViewModel([
+            'forums' => $forumList['_embedded']['forum']]
+        );
     }
     
     public function viewForumAction()
