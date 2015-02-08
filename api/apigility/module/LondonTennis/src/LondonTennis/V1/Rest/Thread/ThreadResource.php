@@ -91,7 +91,7 @@ class ThreadResource extends AbstractResourceListener
                 $select
                     ->columns(['id' => 'threadid', 'subject' => 'threadsubject', 'content' => 'threaddescription', 'creatorId' => 'threadcreatorid'])
                     ->join('user', 'threadcreatorid = user.userid', ['posterName' => 'name'], 'left')
-                    ->where(['threadforumid' => $forumId]);
+                    ->where(['threadforumid' => $forumId, 'threadishidden' => 'N']);
             }
         )->toArray();
         
