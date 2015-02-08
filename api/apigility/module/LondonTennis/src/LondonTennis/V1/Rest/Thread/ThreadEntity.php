@@ -1,26 +1,19 @@
 <?php
 namespace LondonTennis\V1\Rest\Thread;
 
+use Application\Entity\ToAndFromArray;
 class ThreadEntity
 {
+    use ToAndFromArray;
+    
     private $id;
-    
     private $creatorId;
-    
     private $subject;
-    
     private $content;
-    
     private $creatorName;
-    
     private $lastPostTime;
-    
-    private $creatorName;
-    
     private $lastPosterId;
-    
     private $lastPosterName;
-    
     private $postCount;
     
     /**
@@ -104,22 +97,6 @@ class ThreadEntity
     }
 
     /**
-     * @return the $creatorName
-     */
-    public function getCreatorName()
-    {
-        return $this->creatorName;
-    }
-
-    /**
-     * @param field_type $creatorName
-     */
-    public function setCreatorName($creatorName)
-    {
-        $this->creatorName = $creatorName;
-    }
-
-    /**
      * @return the $id
      */
     public function getId()
@@ -181,17 +158,5 @@ class ThreadEntity
     public function setContent($content)
     {
         $this->content = $content;
-    }
-
-    public function getArrayCopy()
-    {
-        return get_object_vars($this);
-    }
-    
-    public function exchangeArray(array $array)
-    {
-        foreach ($array as $key => $value) {
-            $this->$key = $value;
-        }
     }
 }

@@ -1,14 +1,14 @@
 <?php
 namespace LondonTennis\V1\Rest\Token;
 
+use Application\Entity\ToAndFromArray;
 class TokenEntity
 {
+    use ToAndFromArray;
+    
     private $id;
-    
     private $userId;
-    
     private $email;
-    
     private $username;
         
 	/**
@@ -73,17 +73,5 @@ class TokenEntity
     public function setUsername($username)
     {
         $this->username = $username;
-    }
-
-    public function getArrayCopy()
-    {
-        return get_object_vars($this);
-    }
-    
-    public function exchangeArray(array $array)
-    {
-        foreach ($array as $key => $value) {
-            $this->$key = $value;
-        }
     }
 }

@@ -1,14 +1,14 @@
 <?php
-namespace LondonTennis\V1\Rest\Thread;
+namespace LondonTennis\V1\Rest\Post;
 
 use ZF\ApiProblem\ApiProblem;
 use ZF\Rest\AbstractResourceListener;
 use Zend\Db\TableGateway\TableGateway;
-use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Select;
 use Zend\Paginator\Adapter\ArrayAdapter;
+use Zend\Db\Adapter\AdapterInterface;
 
-class ThreadResource extends AbstractResourceListener
+class PostResource extends AbstractResourceListener
 {
     /**
      * @var AdapterInterface
@@ -78,34 +78,34 @@ class ThreadResource extends AbstractResourceListener
      */
     public function fetchAll($params = array())
     {
-        $forumId = $params['forum_id'];
+        $threadId = $params['thread_id'];
         
-        if (empty($forumId)) {
-            return new ApiProblem(400, 'forum_id parameter is required');
+        if (empty($threadId)) {
+            return new ApiProblem(400, 'thread_id parameter is required');
         }
         
-        $gateway = new TableGateway('forumthread', $this->adapter);
+        $gateway = new TableGateway('forumpost', $this->adapter);
         
         $resultSet = $gateway->select(
-            function (Select $select) use ($forumId) {
+            function (Select $select) use ($threadId) {
                 $select
                     ->columns([
-                        'id' => 'threadid',
-                        'subject' => 'threadsubject',
-                        'postCount' => 'threadpostcount',
-                        'content' => 'threaddescription',
-                        'lastPosterId' => 'threadlastposterid',
-                        'lastPostTime' => 'threadlastpostdate',
-                        'creatorId' => 'threadcreatorid'
+                        'id' => 'postid',
+                        'content' => 'postcontent',
+                        'postedTime' => 'posteddate',
+                        'posterId' => 'posterid',
+                        'editCount' => 'posteditcount',
+                        'alterCount' => 'postalertcount',
+                        'editTime' => 'posteditdate',
+                        'recommendations' => 'postrecs',
                     ])
-                    ->join(['a' => 'user'], 'threadcreatorid = a.userid', ['creatorName' => 'name'], 'left')
-                    ->join(['b' => 'user'], 'threadlastposterid = b.userid', ['lastPosterName' => 'name'], 'left')
-                    ->where(['threadforumid' => $forumId, 'threadishidden' => 'N']);
+                    ->join('user', 'posterid = userid', ['posterName' => 'name'], 'left')
+                    ->where(['postthreadid' => $threadId, 'postishidden' => 'N']);
             }
         )->toArray();
         
         $adapter = new ArrayAdapter($resultSet);
-        $collection = new ThreadCollection($adapter);
+        $collection = new PostCollection($adapter);
 
         return $collection;
     }

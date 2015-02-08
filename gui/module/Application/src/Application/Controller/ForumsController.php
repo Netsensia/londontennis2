@@ -16,6 +16,7 @@ class ForumsController extends ApiAwareController
     public function listAction()
     {
         $forumList = $this->api()->getForumList();
+        
         return new ViewModel([
             'forums' => $forumList['_embedded']['forum']
         ]);
@@ -37,16 +38,30 @@ class ForumsController extends ApiAwareController
     
     public function newThreadAction()
     {
-        return new ViewModel();
+        return new ViewModel([
+            'forums' => $this->api()->getForumList()['_embedded']['forum'],
+        ]);
     }
     
     public function viewThreadAction()
     {
-        return new ViewModel();
+        $postList = $this->api()->getPostList(
+            $this->params()->fromRoute('threadid')
+        );
+        
+        return new ViewModel([
+            'currentForum' => $this->api()->getForumDetails(
+                $this->params()->fromRoute('forumid')
+            ),
+            'forums' => $this->api()->getForumList()['_embedded']['forum'],
+            'posts' => $postList['_embedded']['post'],
+        ]);
     }
     
     public function replyAction()
     {
-        return new ViewModel();
+        return new ViewModel([
+            'forums' => $this->api()->getForumList()['_embedded']['forum'],
+        ]);
     }
 }
