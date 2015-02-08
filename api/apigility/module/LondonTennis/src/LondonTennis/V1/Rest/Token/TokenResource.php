@@ -8,6 +8,7 @@ use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Select;
 use Zend\Math\Rand;
 use Zend\Cache\Storage\Adapter\AbstractAdapter;
+use Zend\Session\Container;
 
 
 class TokenResource extends AbstractResourceListener

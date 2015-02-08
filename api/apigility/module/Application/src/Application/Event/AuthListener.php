@@ -5,8 +5,9 @@ use Zend\EventManager\EventInterface;
 use Zend\EventManager\ListenerAggregateInterface;
 use Zend\EventManager\EventManagerInterface;
 
-use Opg\Core\Model\Entity\User\User as UserEntity;
 use Zend\Mvc\MvcEvent;
+use LondonTennis\V1\Rest\Token\TokenEntity;
+use Zend\Session\Container;
 
 class AuthListener implements ListenerAggregateInterface
 {
@@ -26,14 +27,19 @@ class AuthListener implements ListenerAggregateInterface
         $routeName = $e->getRouteMatch()->getMatchedRouteName();
         
         $authRequiredFor = [
-            'london-tennis.rest.forum',
+            'london-tennis.rest.forum' => ['post', 'put'],
         ];
         
+        $request = $e->getRequest();
+        $method = strtolower($request->getMethod());
+        
         $authRequired = false;
-        foreach ($authRequiredFor as $for) {
-            if ($routeName == $for) {
-                $authRequired = true;
-                break;
+        foreach ($authRequiredFor as $resource => $verbs) {
+            foreach ($verbs as $verb) {
+                if ($routeName == $resource && $verb == $method) {
+                    $authRequired = true;
+                    break;
+                }
             }
         }
         
@@ -46,13 +52,16 @@ class AuthListener implements ListenerAggregateInterface
         try {
             if ($e->getRequest()->getHeaders()->get('Authorization')) {
                 
-                $token = $e->getRequest()->getHeaders()->get('Authorization')->getFieldValue();
+                $token = $request->getHeaders()->get('Authorization')->getFieldValue();
                 $zendCache = $e->getApplication()->getServiceManager()->get('ZendCache');
                 
                 $cacheSuccess = false;
-                $cachedEmail = $zendCache->getItem($token, $cacheSuccess);
+
+                $tokenEntity = $zendCache->getItem($token, $cacheSuccess);
                 
-                if ($cacheSuccess) {
+                if ($cacheSuccess && $tokenEntity instanceof TokenEntity) {
+                    $container = new Container('TokenIdentity');
+                    $container->tokenEntity = $tokenEntity;
                     return;
                 }
                 

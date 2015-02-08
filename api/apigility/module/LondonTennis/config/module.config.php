@@ -62,6 +62,7 @@ return array(
             ),
             'collection_http_methods' => array(
                 0 => 'GET',
+                1 => 'POST',
             ),
             'collection_query_whitelist' => array(),
             'page_size' => 25,
