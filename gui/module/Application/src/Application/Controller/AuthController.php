@@ -9,9 +9,7 @@
 
 namespace Application\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
-
-class AuthController extends AbstractActionController
+class AuthController extends ApiAwareController
 {
     public function loginAction()
     {

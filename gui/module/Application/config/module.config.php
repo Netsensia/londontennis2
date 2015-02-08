@@ -55,15 +55,6 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController',
-            'Application\Controller\Auth' => 'Application\Controller\AuthController',
-            'Application\Controller\Players' => 'Application\Controller\PlayersController',
-            'Application\Controller\Results' => 'Application\Controller\ResultsController',
-            'Application\Controller\Courts' => 'Application\Controller\CourtsController',
-            'Application\Controller\Competitions' => 'Application\Controller\CompetitionsController',
-            'Application\Controller\Forums' => 'Application\Controller\ForumsController',
-            'Application\Controller\MyAccount' => 'Application\Controller\MyAccountController',
-            'Application\Controller\Directories' => 'Application\Controller\DirectoriesController',
         ),
     ),
     'view_manager' => array(

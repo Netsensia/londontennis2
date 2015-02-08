@@ -9,10 +9,9 @@
 
 namespace Application\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class ResultsController extends AbstractActionController
+class ResultsController extends ApiAwareController
 {
     public function indexAction()
     {

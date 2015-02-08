@@ -9,10 +9,9 @@
 
 namespace Application\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class PlayersController extends AbstractActionController
+class PlayersController extends ApiAwareController
 {
     public function indexAction()
     {

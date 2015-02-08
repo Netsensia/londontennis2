@@ -49,6 +49,15 @@ class Module
     
     }
 
+    public function getControllerConfig()
+    {
+        return array(
+            'abstract_factories' => array(
+                'Application\Factories\ApiControllerFactory'
+            ),
+        );
+    }
+    
     public function getAutoloaderConfig()
     {
         return array(
