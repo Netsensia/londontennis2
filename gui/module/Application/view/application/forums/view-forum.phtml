@@ -44,8 +44,14 @@
                                     
                                     <tbody>
                                       
+                                      <?php foreach ($this->threads as $thread): ?>
+                                      
                                       <tr class="forum-list">
-                                          <td><a href="<?php echo $this->url('forums/view-forum/view-thread', ['forumid' => $this->routeParams()['forumid'], 'threadid' => 1]); ?>">Fournis - tennis australia stole my idea!</a></td>
+                                          <td>
+                                              <a href="<?php echo $this->url('forums/view-forum/view-thread', ['forumid' => $this->routeParams()['forumid'], 'threadid' => $thread['id']]); ?>">
+                                                <?php echo $thread['subject']; ?>
+                                              </a>
+                                          </td>
                                           <td>22</td>
                                           <td><a class="forum-date" href="#last-post">11 Jan '15 20:23</a></td>
                                           <td><a href="#post-creator">casper88</a></td>
@@ -53,65 +59,8 @@
                                           
                                       </tr>
                                       
-                                        <tr class="forum-list">
-                                          <td><a href="<?php echo $this->url('forums/view-forum/view-thread', ['forumid' => $this->routeParams()['forumid'], 'threadid' => 1]); ?>">Fournis - tennis australia stole my idea!</a></td>
-                                                                                  <td>22</td>
-                                          <td><a class="forum-date" href="#last-post">11 Jan '15 20:23</a></td>
-                                          <td><a href="#post-creator">casper88</a></td>
-                                          <td><a href="#last-poster">thomas323</a></td>
+                                        <?php endforeach; ?>
                                           
-                                      </tr>
-                                      
-                                      <tr class="forum-list">
-                                          <td><a href="<?php echo $this->url('forums/view-forum/view-thread', ['forumid' => $this->routeParams()['forumid'], 'threadid' => 1]); ?>">Fournis - tennis australia stole my idea!</a></td>
-                                                                                <td>22</td>
-                                          <td><a class="forum-date" href="#last-post">11 Jan '15 20:23</a></td>
-                                          <td><a href="#post-creator">casper88</a></td>
-                                          <td><a href="#last-poster">thomas323</a></td>
-                                          
-                                      </tr>
-                                      
-                                      <tr class="forum-list">
-                                          <td><a href="<?php echo $this->url('forums/view-forum/view-thread', ['forumid' => $this->routeParams()['forumid'], 'threadid' => 1]); ?>">Fournis - tennis australia stole my idea!</a></td>
-                                                                                <td>22</td>
-                                          <td><a class="forum-date" href="#last-post">11 Jan '15 20:23</a></td>
-                                          <td><a href="#post-creator">casper88</a></td>
-                                          <td><a href="#last-poster">thomas323</a></td>
-                                          
-                                      </tr>
-                                      
-                                      <tr class="forum-list">
-                                          <td><a href="<?php echo $this->url('forums/view-forum/view-thread', ['forumid' => $this->routeParams()['forumid'], 'threadid' => 1]); ?>">Fournis - tennis australia stole my idea!</a></td>
-                                                                                <td>22</td>
-                                          <td><a class="forum-date" href="#last-post">11 Jan '15 20:23</a></td>
-                                          <td><a href="#post-creator">casper88</a></td>
-                                          <td><a href="#last-poster">thomas323</a></td>
-                                          
-                                      </tr>
-                                      
-                                      <tr class="forum-list">
-                                          <td><a href="<?php echo $this->url('forums/view-forum/view-thread', ['forumid' => $this->routeParams()['forumid'], 'threadid' => 1]); ?>">Fournis - tennis australia stole my idea!</a></td>
-                                                                                <td>22</td>
-                                          <td><a class="forum-date" href="#last-post">11 Jan '15 20:23</a></td>
-                                          <td><a href="#post-creator">casper88</a></td>
-                                          <td><a href="#last-poster">thomas323</a></td>
-                                          
-                                      </tr>
-                                      
-                                      <tr class="forum-list">
-                                          <td><a href="<?php echo $this->url('forums/view-forum/view-thread', ['forumid' => $this->routeParams()['forumid'], 'threadid' => 1]); ?>">Fournis - tennis australia stole my idea!</a></td>
-                                                                                <td>22</td>
-                                          <td><a class="forum-date" href="#last-post">11 Jan '15 20:23</a></td>
-                                          <td><a href="#post-creator">casper88</a></td>
-                                          <td><a href="#last-poster">thomas323</a></td>
-                                          
-                                      </tr>
-                                      
-                                                                            
-                                      
-                                       
-                                        
-                                        
                                         
                                     </tbody>
                                

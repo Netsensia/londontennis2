@@ -17,13 +17,22 @@ class ForumsController extends ApiAwareController
     {
         $forumList = $this->api()->getForumList();
         return new ViewModel([
-            'forums' => $forumList['_embedded']['forum']]
-        );
+            'forums' => $forumList['_embedded']['forum']
+        ]);
     }
     
     public function viewForumAction()
     {
-        return new ViewModel();
+        $forumList = $this->api()->getForumList();
+        
+        $threadList = $this->api()->getThreadList(
+            $this->params()->fromRoute('forumid')
+        );
+        
+        return new ViewModel([
+            'forums' => $forumList['_embedded']['forum'],
+            'threads' => $threadList['_embedded']['thread']
+        ]);
     }
     
     public function newThreadAction()
