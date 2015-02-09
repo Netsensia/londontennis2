@@ -1,29 +1,25 @@
 <?php
-namespace LondonTennis\V1\Rest\Post;
+namespace LondonTennis\V1\Rest\Player;
 
 use ZF\ApiProblem\ApiProblem;
 use ZF\Rest\AbstractResourceListener;
-use Zend\Db\TableGateway\TableGateway;
-use Zend\Db\Sql\Select;
-use Zend\Paginator\Adapter\ArrayAdapter;
-use Zend\Db\Adapter\AdapterInterface;
 
-class PostResource extends AbstractResourceListener
+class PlayerResource extends AbstractResourceListener
 {
     /**
-     * @var AdapterInterface
+     * @var \Zend\Db\TableGateway\TableGateway
      */
-    private $adapter;
+    private $gateway;
     
     /**
      * @param AdapterInterface $connection
      * @param string $passwordSalt
      */
     public function __construct(
-        AdapterInterface $adapter
+        \Zend\Db\TableGateway\TableGateway $gateway
     )
     {
-        $this->adapter = $adapter;
+        $this->gateway = $gateway;
     }
     
     /**
@@ -67,7 +63,42 @@ class PostResource extends AbstractResourceListener
      */
     public function fetch($id)
     {
-        return new ApiProblem(405, 'The GET method has not been defined for individual resources');
+        $resultSet = $this->gateway->select(
+            function (\Zend\Db\Sql\Select $select) use ($id) {
+                $select
+                    ->columns([
+                        'id' => 'userid',
+                        'createdTime' => 'createddate',
+                        'lastPlayedTime' => 'lastplayed',
+                        'isAdmin' => 'isadmin',
+                        'name' => 'name',
+                        'dateOfBirth' => 'dob',
+                        'profileText' => 'profiletext',
+                        'profileImage' => 'forumavatarurl',
+                        'lastActiveTime' => 'lastactivedate',
+                        'ltaNumber' => 'ltanumber',
+                        'parkRating' => 'parkrating',
+                        'ltaRating' => 'ltarating',
+                        'siteRank' => 'siterank',
+                ])
+                ->where(['userid' => $id]);
+            }
+        )->toArray();
+        
+        if (count($resultSet) == 0) {
+            return new ApiProblem(404, 'Player not found');
+        }
+        
+        if (count($resultSet) > 1) {
+            return new ApiProblem(500, 'More than one player found');
+        }
+        
+        $player = new PlayerEntity();
+        $player->exchangeArray($resultSet[0]);
+        
+        $player->setProfileImage('http://www.londontennis.co.uk/' . $player->getProfileImage());
+        
+        return $player;
     }
 
     /**
@@ -78,36 +109,7 @@ class PostResource extends AbstractResourceListener
      */
     public function fetchAll($params = array())
     {
-        $threadId = $params['thread_id'];
-        
-        if (empty($threadId)) {
-            return new ApiProblem(400, 'thread_id parameter is required');
-        }
-        
-        $gateway = new TableGateway('forumpost', $this->adapter);
-        
-        $resultSet = $gateway->select(
-            function (Select $select) use ($threadId) {
-                $select
-                    ->columns([
-                        'id' => 'postid',
-                        'content' => 'postcontent',
-                        'postedTime' => 'posteddate',
-                        'posterId' => 'posterid',
-                        'editCount' => 'posteditcount',
-                        'alterCount' => 'postalertcount',
-                        'editTime' => 'posteditdate',
-                        'recommendations' => 'postrecs',
-                    ])
-                    ->join('user', 'posterid = userid', ['posterName' => 'name'], 'left')
-                    ->where(['postthreadid' => $threadId, 'postishidden' => 'N']);
-            }
-        )->toArray();
-
-        $adapter = new ArrayAdapter($resultSet);
-        $collection = new PostCollection($adapter);
-
-        return $collection;
+        return new ApiProblem(405, 'The GET method has not been defined for collections');
     }
 
     /**

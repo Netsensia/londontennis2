@@ -20,15 +20,6 @@ return array(
                     ),
                 ),
             ),
-            'london-tennis.rest.' => array(
-                'type' => 'Segment',
-                'options' => array(
-                    'route' => '/[/:_id]',
-                    'defaults' => array(
-                        'controller' => 'LondonTennis\\V1\\Rest\\\\Controller',
-                    ),
-                ),
-            ),
             'london-tennis.rest.forumthread' => array(
                 'type' => 'Segment',
                 'options' => array(
@@ -56,17 +47,26 @@ return array(
                     ),
                 ),
             ),
+            'london-tennis.rest.player' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/player[/:player_id]',
+                    'defaults' => array(
+                        'controller' => 'LondonTennis\\V1\\Rest\\Player\\Controller',
+                    ),
+                ),
+            ),
         ),
     ),
     'zf-versioning' => array(
         'uri' => array(
             0 => 'london-tennis.rest.token',
             1 => 'london-tennis.rest.forum',
-            2 => 'london-tennis.rest.',
             3 => 'london-tennis.rest.forumthread',
             4 => 'london-tennis.rest.forumthread',
             5 => 'london-tennis.rest.thread',
             6 => 'london-tennis.rest.post',
+            7 => 'london-tennis.rest.player',
         ),
     ),
     'service_manager' => array(
@@ -75,6 +75,7 @@ return array(
             'LondonTennis\\V1\\Rest\\Forumthread\\ForumthreadResource' => 'LondonTennis\\V1\\Rest\\Forumthread\\ForumthreadResourceFactory',
             'LondonTennis\\V1\\Rest\\Thread\\ThreadResource' => 'LondonTennis\\V1\\Rest\\Thread\\ThreadResourceFactory',
             'LondonTennis\\V1\\Rest\\Post\\PostResource' => 'LondonTennis\\V1\\Rest\\Post\\PostResourceFactory',
+            'LondonTennis\\V1\\Rest\\Player\\PlayerResource' => 'LondonTennis\\V1\\Rest\\Player\\PlayerResourceFactory',
         ),
     ),
     'zf-rest' => array(
@@ -114,28 +115,6 @@ return array(
             'collection_class' => 'LondonTennis\\V1\\Rest\\Forum\\ForumCollection',
             'service_name' => 'forum',
         ),
-        'LondonTennis\\V1\\Rest\\\\Controller' => array(
-            'listener' => 'LondonTennis\\V1\\Rest\\\\Resource',
-            'route_name' => 'london-tennis.rest.',
-            'route_identifier_name' => '_id',
-            'collection_name' => '',
-            'entity_http_methods' => array(
-                0 => 'GET',
-                1 => 'PATCH',
-                2 => 'PUT',
-                3 => 'DELETE',
-            ),
-            'collection_http_methods' => array(
-                0 => 'GET',
-                1 => 'POST',
-            ),
-            'collection_query_whitelist' => array(),
-            'page_size' => 25,
-            'page_size_param' => null,
-            'entity_class' => 'LondonTennis\\V1\\Rest\\\\Entity',
-            'collection_class' => 'LondonTennis\\V1\\Rest\\\\Collection',
-            'service_name' => '',
-        ),
         'LondonTennis\\V1\\Rest\\Thread\\Controller' => array(
             'listener' => 'LondonTennis\\V1\\Rest\\Thread\\ThreadResource',
             'route_name' => 'london-tennis.rest.thread',
@@ -172,14 +151,30 @@ return array(
             'collection_class' => 'LondonTennis\\V1\\Rest\\Post\\PostCollection',
             'service_name' => 'post',
         ),
+        'LondonTennis\\V1\\Rest\\Player\\Controller' => array(
+            'listener' => 'LondonTennis\\V1\\Rest\\Player\\PlayerResource',
+            'route_name' => 'london-tennis.rest.player',
+            'route_identifier_name' => 'player_id',
+            'collection_name' => 'player',
+            'entity_http_methods' => array(
+                0 => 'GET',
+            ),
+            'collection_http_methods' => array(),
+            'collection_query_whitelist' => array(),
+            'page_size' => 25,
+            'page_size_param' => null,
+            'entity_class' => 'LondonTennis\\V1\\Rest\\Player\\PlayerEntity',
+            'collection_class' => 'LondonTennis\\V1\\Rest\\Player\\PlayerCollection',
+            'service_name' => 'player',
+        ),
     ),
     'zf-content-negotiation' => array(
         'controllers' => array(
             'LondonTennis\\V1\\Rest\\Token\\Controller' => 'HalJson',
             'LondonTennis\\V1\\Rest\\Forum\\Controller' => 'HalJson',
-            'LondonTennis\\V1\\Rest\\\\Controller' => 'HalJson',
             'LondonTennis\\V1\\Rest\\Thread\\Controller' => 'HalJson',
             'LondonTennis\\V1\\Rest\\Post\\Controller' => 'HalJson',
+            'LondonTennis\\V1\\Rest\\Player\\Controller' => 'HalJson',
         ),
         'accept_whitelist' => array(
             'LondonTennis\\V1\\Rest\\Token\\Controller' => array(
@@ -192,17 +187,17 @@ return array(
                 1 => 'application/hal+json',
                 2 => 'application/json',
             ),
-            'LondonTennis\\V1\\Rest\\\\Controller' => array(
-                0 => 'application/vnd.london-tennis.v1+json',
-                1 => 'application/hal+json',
-                2 => 'application/json',
-            ),
             'LondonTennis\\V1\\Rest\\Thread\\Controller' => array(
                 0 => 'application/vnd.london-tennis.v1+json',
                 1 => 'application/hal+json',
                 2 => 'application/json',
             ),
             'LondonTennis\\V1\\Rest\\Post\\Controller' => array(
+                0 => 'application/vnd.london-tennis.v1+json',
+                1 => 'application/hal+json',
+                2 => 'application/json',
+            ),
+            'LondonTennis\\V1\\Rest\\Player\\Controller' => array(
                 0 => 'application/vnd.london-tennis.v1+json',
                 1 => 'application/hal+json',
                 2 => 'application/json',
@@ -217,15 +212,15 @@ return array(
                 0 => 'application/vnd.london-tennis.v1+json',
                 1 => 'application/json',
             ),
-            'LondonTennis\\V1\\Rest\\\\Controller' => array(
-                0 => 'application/vnd.london-tennis.v1+json',
-                1 => 'application/json',
-            ),
             'LondonTennis\\V1\\Rest\\Thread\\Controller' => array(
                 0 => 'application/vnd.london-tennis.v1+json',
                 1 => 'application/json',
             ),
             'LondonTennis\\V1\\Rest\\Post\\Controller' => array(
+                0 => 'application/vnd.london-tennis.v1+json',
+                1 => 'application/json',
+            ),
+            'LondonTennis\\V1\\Rest\\Player\\Controller' => array(
                 0 => 'application/vnd.london-tennis.v1+json',
                 1 => 'application/json',
             ),
@@ -257,18 +252,6 @@ return array(
                 'route_identifier_name' => 'forum_id',
                 'is_collection' => true,
             ),
-            'LondonTennis\\V1\\Rest\\\\Entity' => array(
-                'entity_identifier_name' => 'id',
-                'route_name' => 'london-tennis.rest.',
-                'route_identifier_name' => '_id',
-                'hydrator' => 'Zend\\Stdlib\\Hydrator\\ArraySerializable',
-            ),
-            'LondonTennis\\V1\\Rest\\\\Collection' => array(
-                'entity_identifier_name' => 'id',
-                'route_name' => 'london-tennis.rest.',
-                'route_identifier_name' => '_id',
-                'is_collection' => true,
-            ),
             'LondonTennis\\V1\\Rest\\Thread\\ThreadEntity' => array(
                 'entity_identifier_name' => 'id',
                 'route_name' => 'london-tennis.rest.thread',
@@ -293,6 +276,18 @@ return array(
                 'route_identifier_name' => 'post_id',
                 'is_collection' => true,
             ),
+            'LondonTennis\\V1\\Rest\\Player\\PlayerEntity' => array(
+                'entity_identifier_name' => 'id',
+                'route_name' => 'london-tennis.rest.player',
+                'route_identifier_name' => 'player_id',
+                'hydrator' => 'Zend\\Stdlib\\Hydrator\\ArraySerializable',
+            ),
+            'LondonTennis\\V1\\Rest\\Player\\PlayerCollection' => array(
+                'entity_identifier_name' => 'id',
+                'route_name' => 'london-tennis.rest.player',
+                'route_identifier_name' => 'player_id',
+                'is_collection' => true,
+            ),
         ),
     ),
     'zf-apigility' => array(
@@ -304,13 +299,6 @@ return array(
                 'controller_service_name' => 'LondonTennis\\V1\\Rest\\Forum\\Controller',
                 'entity_identifier_name' => 'forumid',
                 'table_service' => 'LondonTennis\\V1\\Rest\\Forum\\ForumResource\\Table',
-            ),
-            'LondonTennis\\V1\\Rest\\\\Resource' => array(
-                'adapter_name' => 'londontennis',
-                'table_name' => '',
-                'hydrator_name' => 'Zend\\Stdlib\\Hydrator\\ArraySerializable',
-                'controller_service_name' => 'LondonTennis\\V1\\Rest\\\\Controller',
-                'entity_identifier_name' => 'id',
             ),
         ),
     ),

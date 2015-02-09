@@ -2,6 +2,7 @@
 namespace LondonTennis\V1\Rest\Post;
 
 use Application\Entity\ToAndFromArray;
+
 class PostEntity
 {
     use ToAndFromArray;

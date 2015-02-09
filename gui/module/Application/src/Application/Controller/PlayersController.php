@@ -18,6 +18,16 @@ class PlayersController extends ApiAwareController
         $this->redirect()->toRoute('players/search');    
     }
     
+    public function profileAction()
+    {
+        $playerId = $this->params()->fromRoute('playerid');
+        $playerDetails = $this->api()->getPlayerDetails($playerId);
+        
+        return [
+            'player' => $playerDetails  
+        ];
+    }   
+    
     public function searchAction()
     {
         return new ViewModel();

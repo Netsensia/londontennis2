@@ -1,7 +1,5 @@
 <?php
-use Zend\Authentication\AuthenticationService;
-use Application\Adapter\AuthAdapter;
-use LondonTennis\Api\Client\Client;
+
 /**
  * Zend Framework (http://framework.zend.com/)
  *
@@ -24,6 +22,17 @@ return array(
                 ),
                 'may_terminate' => true,
                 'child_routes' => [
+                    'profile' => [
+                        'type' => 'Zend\Mvc\Router\Http\Segment',
+                        'options' => [
+                            'route' => '/:playerid',
+                            'constraints' => ['playerid' => '[0-9]*'],
+                            'defaults' => [
+                                'action' => 'profile',
+                                'id' => 0,
+                            ],
+                        ],
+                    ],
                     'search' => [
                         'type' => 'Zend\Mvc\Router\Http\Literal',
                         'options' => [
