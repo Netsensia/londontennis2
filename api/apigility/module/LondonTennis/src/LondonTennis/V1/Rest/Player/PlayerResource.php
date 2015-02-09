@@ -96,7 +96,13 @@ class PlayerResource extends AbstractResourceListener
         $player = new PlayerEntity();
         $player->exchangeArray($resultSet[0]);
         
-        $player->setProfileImage('http://www.londontennis.co.uk/' . $player->getProfileImage());
+        $image = $player->getProfileImage();
+        
+        if (trim($image) == '') {
+            $image = '/img/avatar/no-avatar-male.gif';
+        }
+        
+        $player->setProfileImage('http://www.londontennis.co.uk/' . $image);
         
         return $player;
     }
