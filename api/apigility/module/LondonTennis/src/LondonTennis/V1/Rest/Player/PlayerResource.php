@@ -68,16 +68,17 @@ class PlayerResource extends AbstractResourceListener
                 $select
                     ->columns([
                         'id' => 'userid',
-                        'createdTime' => 'createddate',
+                        'joinDate' => 'createddate',
                         'lastPlayedTime' => 'lastplayed',
                         'isAdmin' => 'isadmin',
                         'name' => 'name',
+                        'sex' => 'sex',
                         'dateOfBirth' => 'dob',
                         'profileText' => 'profiletext',
                         'profileImage' => 'forumavatarurl',
                         'lastActiveTime' => 'lastactivedate',
                         'ltaNumber' => 'ltanumber',
-                        'parkRating' => 'parkrating',
+                        'userRating' => 'parkrating',
                         'ltaRating' => 'ltarating',
                         'siteRank' => 'siterank',
                 ])
@@ -96,13 +97,7 @@ class PlayerResource extends AbstractResourceListener
         $player = new PlayerEntity();
         $player->exchangeArray($resultSet[0]);
         
-        $image = $player->getProfileImage();
         
-        if (trim($image) == '') {
-            $image = '/img/avatar/no-avatar-male.gif';
-        }
-        
-        $player->setProfileImage('http://www.londontennis.co.uk/' . $image);
         
         return $player;
     }

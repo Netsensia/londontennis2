@@ -11,7 +11,7 @@ class PlayerEntity
      * Uneditable
      */
     private $id;
-    private $createdTime;
+    private $joinDate;
     private $lastPlayedTime;
     
     /**
@@ -26,7 +26,7 @@ class PlayerEntity
     private $profileImage;
     private $lastActiveTime;
     private $ltaNumber;
-    private $parkRating;
+    private $userRating;
     private $ltaRating;
     private $siteRank;
     
@@ -47,19 +47,20 @@ class PlayerEntity
     }
 
     /**
-     * @return the $createdTime
+     * @return the $joinDate
      */
-    public function getCreatedTime()
+    public function getJoinDate()
     {
-        return $this->createdTime;
+        return $this->joinDate;
     }
 
     /**
-     * @param field_type $createdTime
+     * @param field_type $joinDate
      */
-    public function setCreatedTime($createdTime)
+    public function setJoinDate($joinDate)
     {
-        $this->createdTime = $createdTime;
+        $timestamp = strtotime($joinDate);
+        $this->joinDate = date('F j, Y', $timestamp);
     }
 
     /**
@@ -207,19 +208,19 @@ class PlayerEntity
     }
 
     /**
-     * @return the $parkRating
+     * @return the $userRating
      */
-    public function getParkRating()
+    public function getUserRating()
     {
-        return $this->parkRating;
+        return $this->userRating;
     }
 
     /**
-     * @param field_type $parkRating
+     * @param field_type $userRating
      */
-    public function setParkRating($parkRating)
+    public function setUserRating($userRating)
     {
-        $this->parkRating = $parkRating;
+        $this->userRating = $userRating;
     }
 
     /**
@@ -254,5 +255,29 @@ class PlayerEntity
         $this->siteRank = $siteRank;
     }
 
+    public function exchangeArray(array $array)
+    {
+        foreach ($array as $key => $value) {
+            $this->$key = $value;
+        }
+        
+        $image = $this->getProfileImage();
+        
+        if (trim($image) == '') {
+            $image = '/img/avatar/no-avatar-male.gif';
+        }
+        
+        $sex = strtolower($this->getSex());
+        switch ($sex) {
+            case 'm': $this->setSex('Male'); break;
+            case 'f': $this->setSex('Female'); break;
+            default: $this->setSex('Unknown');
+        }
+        
+        $this->setJoinDate($this->getJoinDate());
+        $this->setUserRating('ITN ' . $this->getUserRating());
+        
+        $this->setProfileImage('http://www.londontennis.co.uk/' . $image);
+    }
 
 }
