@@ -5,13 +5,27 @@ trait ToAndFromArray
 {
     public function getArrayCopy()
     {
-        return get_object_vars($this);
+        $arrayCopy = [];
+        
+        $vars = get_object_vars($this);
+        
+        foreach ($vars as $key => $value) {
+            if (is_object($value) && method_exists($value, 'getArrayCopy')) {
+                $arrayCopy[$key] = $value->getArrayCopy(); 
+            } else {
+                $arrayCopy[$key] = $value; 
+            }
+        }
+        
+        return $arrayCopy;
     }
     
     public function exchangeArray(array $array)
     {
         foreach ($array as $key => $value) {
-            $this->$key = $value;
+            if (property_exists($this, $key)) {
+                $this->$key = $value;
+            }
         }
     }
 }

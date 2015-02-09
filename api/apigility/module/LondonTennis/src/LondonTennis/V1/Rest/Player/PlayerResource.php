@@ -3,6 +3,7 @@ namespace LondonTennis\V1\Rest\Player;
 
 use ZF\ApiProblem\ApiProblem;
 use ZF\Rest\AbstractResourceListener;
+use Application\Entity\OpponentPreferences;
 
 class PlayerResource extends AbstractResourceListener
 {
@@ -83,8 +84,19 @@ class PlayerResource extends AbstractResourceListener
                         'userRating' => 'parkrating',
                         'ltaRating' => 'ltarating',
                         'siteRank' => 'siterank',
-                ])
-                ->where(['userid' => $id]);
+                        'male' => 'opponent_male',
+                        'female' => 'opponent_female',
+                        'doubles' => 'play_doubles',
+                        'singles' => 'play_singles',
+                        'mixedDoubles' => 'play_mixeddoubles',
+                        'weekdayMornings' => 'play_wdmorn',
+                        'weekdayAfternoons' => 'play_wdafternoon',
+                        'weekdayEvenings' => 'play_wdevening',
+                        'saturday' => 'play_saturday',
+                        'sunday' => 'play_sunday',
+                        'shortNotice' => 'play_shortnotice',
+                    ])
+                    ->where(['userid' => $id]);
             }
         )->toArray();
         
@@ -96,10 +108,15 @@ class PlayerResource extends AbstractResourceListener
             return new ApiProblem(500, 'More than one player found');
         }
         
+        $row = $resultSet[0];
+        
         $player = new PlayerEntity();
-        $player->exchangeArray($resultSet[0]);
+        $player->exchangeArray($row);
         
+        $opponentPreferences = new OpponentPreferences();
+        $opponentPreferences->exchangeArray($row);
         
+        $player->setOpponentPreferences($opponentPreferences);
         
         return $player;
     }

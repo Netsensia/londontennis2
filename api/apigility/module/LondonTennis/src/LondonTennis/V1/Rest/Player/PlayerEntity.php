@@ -2,6 +2,7 @@
 namespace LondonTennis\V1\Rest\Player;
 
 use Application\Entity\ToAndFromArray;
+use Application\Entity\OpponentPreferences;
 
 class PlayerEntity
 {
@@ -32,6 +33,27 @@ class PlayerEntity
     private $milesRadius;
     private $postcode;
     
+    /**
+     * @var OpponentPreferences
+     */
+    private $opponentPreferences;
+    
+    /**
+     * @return the $opponentPreferences
+     */
+    public function getOpponentPreferences()
+    {
+        return $this->opponentPreferences;
+    }
+
+    /**
+     * @param OpponentPreferences $opponentPreferences
+     */
+    public function setOpponentPreferences($opponentPreferences)
+    {
+        $this->opponentPreferences = $opponentPreferences;
+    }
+
     /**
      * @return the $postcode
      */
@@ -291,7 +313,9 @@ class PlayerEntity
     public function exchangeArray(array $array)
     {
         foreach ($array as $key => $value) {
-            $this->$key = $value;
+            if (property_exists($this, $key)) {
+                $this->$key = $value;
+            }
         }
         
         $image = $this->getProfileImage();
