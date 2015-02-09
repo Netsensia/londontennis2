@@ -40,10 +40,35 @@ class PlayersController extends ApiAwareController
             $playerDetails['milesRadius'] = $playerDetails['milesRadius'] . ' ' . $word . ' of ' . strtoupper($playerDetails['postcode']); 
         }
         
+        $prefs = $playerDetails['opponentPreferences'];
+        $playerDetails['opponentSex'] = $this->getOpponentPrefsString($prefs, ['male', 'female']);
+        $playerDetails['format'] = $this->getOpponentPrefsString($prefs, ['singles', 'doubles', 'mixedDoubles']);
+        $playerDetails['availability'] = $this->getOpponentPrefsString($prefs, ['weekdayMornings', 'weekdayAfternoons', 'weekdayEvenings', 'saturday', 'sunday', 'shortNotice']);
+        
         return [
             'player' => $playerDetails  
         ];
     }   
+    
+    private function getOpponentPrefsString($prefs, $keys)
+    {
+        $retString = '';
+        
+        foreach ($keys as $key) {
+            if ($prefs[$key] == 'Y') {
+                $retString .= ' ' . ucfirst($this->fromCamelCase($key)) . ', ';        
+            }
+        }
+        
+        return substr(trim($retString), 0, count($retString)-2);
+    }
+    
+    private function fromCamelCase($camelCaseString)
+    {
+        $re = '/(?<=[a-z])(?=[A-Z])/x';
+        $a = preg_split($re, $camelCaseString);
+        return join($a, " " );
+    }
     
     public function searchAction()
     {
