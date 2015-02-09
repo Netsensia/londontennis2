@@ -31,7 +31,11 @@ class AuthListener implements ListenerAggregateInterface
         ];
         
         $request = $e->getRequest();
-        $method = strtolower($request->getMethod());
+        if (method_exists($request, 'getMethod')) {
+            $method = strtolower($request->getMethod());
+        } else {
+            return;
+        }
         
         $authRequired = false;
         foreach ($authRequiredFor as $resource => $verbs) {
