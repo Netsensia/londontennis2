@@ -29,7 +29,41 @@ class PlayerEntity
     private $userRating;
     private $ltaRating;
     private $siteRank;
+    private $milesRadius;
+    private $postcode;
     
+    /**
+     * @return the $postcode
+     */
+    public function getPostcode()
+    {
+        return $this->postcode;
+    }
+
+    /**
+     * @param field_type $postcode
+     */
+    public function setPostcode($postcode)
+    {
+        $this->postcode = $postcode;
+    }
+
+    /**
+     * @return the $milesRadius
+     */
+    public function getMilesRadius()
+    {
+        return $this->milesRadius;
+    }
+
+    /**
+     * @param field_type $milesRadius
+     */
+    public function setMilesRadius($milesRadius)
+    {
+        $this->milesRadius = $milesRadius;
+    }
+
     /**
      * @return the $id
      */
@@ -59,8 +93,7 @@ class PlayerEntity
      */
     public function setJoinDate($joinDate)
     {
-        $timestamp = strtotime($joinDate);
-        $this->joinDate = date('F j, Y', $timestamp);
+        $this->joinDate = $joinDate;
     }
 
     /**
@@ -273,9 +306,6 @@ class PlayerEntity
             case 'f': $this->setSex('Female'); break;
             default: $this->setSex('Unknown');
         }
-        
-        $this->setJoinDate($this->getJoinDate());
-        $this->setUserRating('ITN ' . $this->getUserRating());
         
         $this->setProfileImage('http://www.londontennis.co.uk/' . $image);
     }

@@ -73,6 +73,8 @@ class PlayerResource extends AbstractResourceListener
                         'isAdmin' => 'isadmin',
                         'name' => 'name',
                         'sex' => 'sex',
+                        'milesRadius' => 'postcodemiles',
+                        'postcode' => 'postcode',
                         'dateOfBirth' => 'dob',
                         'profileText' => 'profiletext',
                         'profileImage' => 'forumavatarurl',
