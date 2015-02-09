@@ -1,12 +1,11 @@
-                                <div class="filters">
+<div class="filters">
 <ul class="nav-tabs nav">
 
 <?php echo $this->subMenuOption('forums', 'Forum List', 'active'); ?>
 
 <?php foreach ($this->forums as $forum): ?>
-                                        <?php echo $this->subMenuOption('forums/view-forum', $forum['forumname'], 'active', ['forumid' => $forum['forumid']]); ?>
+<?php echo $this->subMenuOption('forums/view-forum', $forum['forumname'], 'active', ['forumid' => $forum['forumid']], $forum['forumid'] == $this->currentForum['forumid']); ?>
+<?php endforeach; ?>
 
-                                        <?php endforeach; ?>
-
-                                       </ul>
-                                       </div>
+</ul>
+</div>

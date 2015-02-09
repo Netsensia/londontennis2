@@ -5,7 +5,7 @@ use Zend\View\Helper\AbstractHelper;
 
 class SubMenuOption extends AbstractHelper
 {
-    public function __invoke($route, $label, $activeClass, $params = [])
+    public function __invoke($route, $label, $activeClass, $params = [], $forceActive = false)
     {
         $routeName = $this->view->routeName();
         $routeParams = $this->view->routeParams();
@@ -13,7 +13,7 @@ class SubMenuOption extends AbstractHelper
         unset($routeParams['controller']);
         unset($routeParams['action']);
                 
-        if ($routeName == $route && $routeParams == $params) {
+        if ($forceActive || ($routeName == $route && $routeParams == $params)) {
             $class = $activeClass;
         } else {
             $class = '';
