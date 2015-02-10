@@ -45,6 +45,9 @@ class PlayersController extends ApiAwareController
         $playerDetails['format'] = $this->getOpponentPrefsString($prefs, ['singles', 'doubles', 'mixedDoubles']);
         $playerDetails['availability'] = $this->getOpponentPrefsString($prefs, ['weekdayMornings', 'weekdayAfternoons', 'weekdayEvenings', 'saturday', 'sunday', 'shortNotice']);
         
+        $playerDetails['availability'] = str_replace("Saturday, Sunday", 'Weekends', $playerDetails['availability']);
+        $playerDetails['availability'] = str_replace('Weekday Mornings, Weekday Afternoons, Weekday Evenings, Weekends', 'Anytime', $playerDetails['availability']);
+        
         return [
             'player' => $playerDetails  
         ];
@@ -55,8 +58,8 @@ class PlayersController extends ApiAwareController
         $retString = '';
         
         foreach ($keys as $key) {
-            if ($prefs[$key] == 'Y') {
-                $retString .= ' ' . ucfirst($this->fromCamelCase($key)) . ', ';        
+            if (strtoupper($prefs[$key]) == 'Y') {
+                $retString .= ucfirst($this->fromCamelCase($key)) . ', ';        
             }
         }
         
@@ -67,7 +70,7 @@ class PlayersController extends ApiAwareController
     {
         $re = '/(?<=[a-z])(?=[A-Z])/x';
         $a = preg_split($re, $camelCaseString);
-        return join($a, " " );
+        return join($a, ' ');
     }
     
     public function searchAction()
