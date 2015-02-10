@@ -20,6 +20,7 @@ return array(
             'menuOption' => 'Application\View\Helper\MenuOption',
             'subMenuOption' => 'Application\View\Helper\SubMenuOption',
             'playerLink' => 'Application\View\Helper\PlayerLink',
+            'clubLink' => 'Application\View\Helper\ClubLink',
         ],
     ],
     

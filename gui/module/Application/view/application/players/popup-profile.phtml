@@ -25,91 +25,12 @@
 		<div class="box-player-stats clearfix">
 
 			<div class="col-lg-6">
-				<table class="table box-stats-table table-bordered">
-					<thead>
-						<tr>
-							<td colspan="2">
-								<p class="text-center">Player Profile</p>
-							</td>
-						</tr>
-
-					</thead>
-
-					<tbody>
-						<tr>
-							<td>Name</td>
-							<td>Paul Barton</td>
-						</tr>
-
-						<tr>
-							<td>Gender</td>
-							<td>Male</td>
-						</tr>
-						<tr>
-							<td>Joined</td>
-							<td>29 Mar '01</td>
-						</tr>
-						<tr>
-							<td>User Rating</td>
-							<td>-</td>
-						</tr>
-						<tr>
-							<td>LTA Number</td>
-							<td>-</td>
-						</tr>
-						<tr>
-							<td>LTa Rating</td>
-							<td>-</td>
-						</tr>
-
-
-					</tbody>
-
-
-				</table>
+				<?php echo $this->partial('application/players/partials/player-details-table.phtml'); ?>
 
 			</div>
 
 			<div class="col-lg-6">
-				<table class="table box-stats-table table-bordered">
-					<thead>
-						<tr>
-							<td colspan="2">
-								<p class="text-center">Tennis Preferences</p>
-							</td>
-						</tr>
-
-					</thead>
-
-					<tbody>
-						<tr>
-							<td>Play Radius</td>
-							<td>1 miles of SW19</td>
-						</tr>
-
-						<tr>
-							<td>Opponents</td>
-							<td>Male</td>
-						</tr>
-						<tr>
-							<td>Format</td>
-							<td>Singles</td>
-						</tr>
-						<tr>
-							<td>Times</td>
-							<td>-</td>
-						</tr>
-						<tr>
-							<td>Home Venue</td>
-							<td>Wimbledon Park</td>
-						</tr>
-
-
-
-					</tbody>
-
-
-				</table>
+				<?php echo $this->partial('application/players/partials/tennis-preferences-table.phtml'); ?>
 
 			</div>
 

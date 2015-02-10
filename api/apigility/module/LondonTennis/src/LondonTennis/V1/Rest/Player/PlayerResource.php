@@ -96,7 +96,9 @@ class PlayerResource extends AbstractResourceListener
                         'sunday' => 'play_sunday',
                         'shortNotice' => 'play_shortnotice',
                     ])
-                    ->where(['userid' => $id]);
+                    ->join('userclub', 'user.userid = userclub.userid', ['homeClubId' => 'clubid'])
+                    ->join('club', 'userclub.clubid = club.clubid', ['clubid', 'homeClubName' => 'name'])
+                    ->where(['user.userid' => $id, 'isfavourite' => 'Y']);
             }
         )->toArray();
         

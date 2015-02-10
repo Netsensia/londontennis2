@@ -71,92 +71,14 @@
 							<div class="box-player-stats clearfix">
 
 								<div class="col-lg-3">
-									<table class="table box-stats-table table-bordered">
-										<thead>
-											<tr>
-												<td colspan="2">
-													<p class="text-center">Player Details</p>
-												</td>
-											</tr>
-
-										</thead>
-
-										<tbody>
-											<tr>
-												<td>Name</td>
-												<td><?php echo $this->player['name']; ?></td>
-											</tr>
-
-											<tr>
-												<td>Gender</td>
-												<td><?php echo $this->player['sex']; ?></td>
-											</tr>
-											<tr>
-												<td>Joined</td>
-												<td><?php echo $this->player['joinDate']; ?></td>
-											</tr>
-											<tr>
-												<td>User Rating</td>
-												<td><?php echo $this->player['userRating']; ?></td>
-											</tr>
-											<tr>
-												<td>LTA Number</td>
-												<td><?php echo $this->player['ltaNumber']; ?></td>
-											</tr>
-											<tr>
-												<td>LTa Rating</td>
-												<td><?php echo $this->player['ltaRating']; ?></td>
-											</tr>
-
-
-										</tbody>
-
-
-									</table>
+									<?php echo $this->partial('application/players/partials/player-details-table.phtml'); ?>
 
 								</div>
 
 								<div class="col-lg-3">
-									<table class="table box-stats-table table-bordered">
-										<thead>
-											<tr>
-												<td colspan="2">
-													<p class="text-center">Tennis Preferences</p>
-												</td>
-											</tr>
-
-										</thead>
-
-										<tbody>
-											<tr>
-												<td>Play Radius</td>
-												<td><?php echo $this->player['milesRadius']; ?></td>
-											</tr>
-
-											<tr>
-												<td>Opponents</td>
-												<td><?php echo $this->player['opponentSex']; ?></td>
-											</tr>
-											<tr>
-												<td>Format</td>
-												<td><?php echo $this->player['format']; ?></td>
-											</tr>
-											<tr>
-												<td>Times</td>
-												<td><?php echo $this->player['availability']; ?></td>
-											</tr>
-											<tr>
-												<td>Home Venue</td>
-												<td>Wimbledon Park</td>
-											</tr>
-
-
-
-										</tbody>
-
-
-									</table>
-
+								    <?php echo $this->partial('application/players/partials/tennis-preferences-table.phtml'); ?>
+								
+									
 								</div>
 
 

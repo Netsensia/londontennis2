@@ -41,7 +41,7 @@ return array(
                         ],
                     ],
                     'profile' => [
-                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'type' => 'Zend\Mvc\Router\Http\Segment',
                         'options' => [
                             'route' => '/profile[/:id]',
                             'defaults' => [

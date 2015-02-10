@@ -38,6 +38,41 @@ class PlayerEntity
      */
     private $opponentPreferences;
     
+    private $homeClubId;
+    private $homeClubName;
+    
+    /**
+     * @return the $homeClubId
+     */
+    public function getHomeClubId()
+    {
+        return $this->homeClubId;
+    }
+
+    /**
+     * @param field_type $homeClubId
+     */
+    public function setHomeClubId($homeClubId)
+    {
+        $this->homeClubId = $homeClubId;
+    }
+
+    /**
+     * @return the $homeClubName
+     */
+    public function getHomeClubName()
+    {
+        return $this->homeClubName;
+    }
+
+    /**
+     * @param field_type $homeClubName
+     */
+    public function setHomeClubName($homeClubName)
+    {
+        $this->homeClubName = $homeClubName;
+    }
+
     /**
      * @return the $opponentPreferences
      */
