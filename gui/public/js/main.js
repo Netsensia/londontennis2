@@ -3,9 +3,9 @@ $(document).ready(function(){
 	
 	
 	$(document).delegate('.playerpopup', 'click', function() {
-		$('#player-modal .box-profile-title').html($(this).attr('data-playerName'));
-		$('#player-modal .modal-body').load('/players/' + $(this).attr('data-playerId') + '/popup-profile', function() {
-			$('#player-modal').modal('show');
+		$('#playermodal .box-profile-title').html($(this).attr('data-playerName'));
+		$('#playermodal .modal-body').load('/players/' + $(this).attr('data-playerId') + '/popup-profile', function() {
+			$('#playermodal').modal('show');
 		});
 	});
 	
