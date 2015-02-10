@@ -32,6 +32,10 @@ class PlayerService extends ApiAwareService
         $playerDetails['availability'] = str_replace("Saturday, Sunday", 'Weekends', $playerDetails['availability']);
         $playerDetails['availability'] = str_replace('Weekday Mornings, Weekday Afternoons, Weekday Evenings, Weekends', 'Anytime', $playerDetails['availability']);
         
+        if ($playerDetails['siteRank'] == 100000) {
+            $playerDetails['siteRank'] = 'Unrated';
+        }
+        
         return $playerDetails;
     }
     

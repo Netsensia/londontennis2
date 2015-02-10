@@ -4,6 +4,7 @@ namespace LondonTennis\V1\Rest\Player;
 use ZF\ApiProblem\ApiProblem;
 use ZF\Rest\AbstractResourceListener;
 use Application\Entity\OpponentPreferences;
+use Zend\Db\Sql\Select;
 
 class PlayerResource extends AbstractResourceListener
 {
@@ -96,9 +97,7 @@ class PlayerResource extends AbstractResourceListener
                         'sunday' => 'play_sunday',
                         'shortNotice' => 'play_shortnotice',
                     ])
-                    ->join('userclub', 'user.userid = userclub.userid', ['homeClubId' => 'clubid'])
-                    ->join('club', 'userclub.clubid = club.clubid', ['clubid', 'homeClubName' => 'name'])
-                    ->where(['user.userid' => $id, 'isfavourite' => 'Y']);
+                    ->where(['user.userid' => $id]);
             }
         )->toArray();
         
@@ -119,6 +118,21 @@ class PlayerResource extends AbstractResourceListener
         $opponentPreferences->exchangeArray($row);
         
         $player->setOpponentPreferences($opponentPreferences);
+        
+        $resultSet = $this->gateway->select(
+            function (\Zend\Db\Sql\Select $select) use ($id) {
+                $select
+                    ->columns(['userid'])
+                    ->join('userclub', 'user.userid = userclub.userid', ['homeClubId' => 'clubid'])
+                    ->join('club', 'userclub.clubid = club.clubid', ['clubid', 'homeClubName' => 'name'])
+                    ->where(['user.userid' => $id, 'isfavourite' => 'Y']);
+            }
+        )->toArray();
+        
+        if (count($resultSet) == 1) {
+            $player->setHomeClubId($resultSet[0]['homeClubId']);
+            $player->setHomeClubName($resultSet[0]['homeClubName']);
+        }
         
         return $player;
     }
