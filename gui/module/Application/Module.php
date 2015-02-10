@@ -48,15 +48,6 @@ class Module
         return $config;
     
     }
-
-    public function getControllerConfig()
-    {
-        return array(
-            'abstract_factories' => array(
-                'Application\Factories\ApiControllerFactory'
-            ),
-        );
-    }
     
     public function getAutoloaderConfig()
     {

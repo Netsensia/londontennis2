@@ -67,7 +67,7 @@
 										<!-- thread post  -->
 
 										<tr class="post-light">
-											<td class="poster"><a href="#poster"><?php echo $post['posterName']; ?></a></td>
+											<td class="poster"><?php echo $this->playerLink($post['posterId'], $post['posterName']); ?></td>
 											<td class="forum-post"><span class="posteddate forum-date"><?php echo $post['postedTime']; ?> : <?php echo $post['recommendations']; ?> recs</span>
 												<p>
     												<?php echo $post['content']; ?>

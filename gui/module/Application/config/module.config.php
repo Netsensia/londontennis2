@@ -19,6 +19,7 @@ return array(
             'jumboClass' => 'Application\View\Helper\JumboClass',
             'menuOption' => 'Application\View\Helper\MenuOption',
             'subMenuOption' => 'Application\View\Helper\SubMenuOption',
+            'playerLink' => 'Application\View\Helper\PlayerLink',
         ],
     ],
     
@@ -26,6 +27,7 @@ return array(
         'abstract_factories' => array(
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
             'Zend\Log\LoggerAbstractServiceFactory',
+            'Application\Factories\ApiServiceFactory'
         ),
         'aliases' => array(
             'translator' => 'MvcTranslator',
@@ -54,8 +56,9 @@ return array(
         ),
     ),
     'controllers' => array(
-        'invokables' => array(
-        ),
+        'abstract_factories' => [
+            'Application\Factories\ApiControllerFactory',
+        ],
     ),
     'view_manager' => array(
         'display_not_found_reason' => true,

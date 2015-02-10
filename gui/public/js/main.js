@@ -1,9 +1,15 @@
 
-
-
 $(document).ready(function(){
-    
-    $('body').bind('touchstart', function() {});
+	
+	
+	$(document).delegate('.playerpopup', 'click', function() {
+		$('#player-modal .box-profile-title').html($(this).attr('data-playerName'));
+		$('#player-modal .modal-body').load('/players/' + $(this).attr('data-playerId') + '/popup-profile', function() {
+			$('#player-modal').modal('show');
+		});
+	});
+	
+	$('body').bind('touchstart', function() {});
     
 //Load ranodm flag image
     

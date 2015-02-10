@@ -54,9 +54,8 @@
                                           </td>
                                           <td><?php echo $thread['postCount']; ?></td>
                                           <td><a class="forum-date" href="#last-post"><?php echo $thread['lastPostTime']; ?></a></td>
-                                          <td><a href="<?php echo $this->url('players/profile', ['playerid' => $thread['creatorId']]); ?>"><?php echo $thread['creatorName']; ?></a></td>
-                                          <td><a href="<?php echo $this->url('players/profile', ['playerid' => $thread['lastPosterId']]); ?>"><?php echo $thread['lastPosterName']; ?></a></td>
-                                          
+                                          <td><?php echo $this->playerLink($thread['creatorId'], $thread['creatorName']); ?></td>
+                                          <td><?php echo $this->playerLink($thread['lastPosterId'], $thread['lastPosterName']); ?></td>
                                       </tr>
                                       
                                         <?php endforeach; ?>

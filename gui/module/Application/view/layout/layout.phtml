@@ -16,12 +16,15 @@
                         ->prependStylesheet($this->basePath() . '/css/main.css?r=' . rand(1,10000000))
                         ->prependStylesheet($this->basePath() . '/css/bootstrap.css?r=' . rand(1,10000000))
         ?>
-
+        
         <!-- Scripts -->
         <?php echo $this->headScript()
-            ->prependFile($this->basePath() . 'js/vendor/modernizr-2.6.2-respond-1.1.0.min.js')
+            ->prependFile($this->basePath() . '/js/main.js?r=' . rand(1,10000000))
+            ->prependFile($this->basePath() . '/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js')
             ->prependFile($this->basePath() . '/js/bootstrap.min.js')
             ->prependFile($this->basePath() . '/js/jquery.min.js')
+            ->prependFile($this->basePath() . '/js/vendor/wow.min.js')
+            ->prependFile($this->basePath() . '/js/vendor/sc.js')
             ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
             ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
         ; ?>
@@ -30,7 +33,7 @@
         
     </head>
     <body>
-        <!--[if lt IE 7]>
+            <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <?php echo $this->partial('layout/partials/navbar.phtml'); ?>
@@ -47,10 +50,10 @@
             
         <?php echo $this->inlineScript() ?>
                  
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
-        <script src="js/vendor/bootstrap.min.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/vendor/sc.js"></script>
+        <?php echo $this->partial('layout/modal/player-modal.phtml'); ?>
+ 
     </body>
+
+   
+    
 </html>

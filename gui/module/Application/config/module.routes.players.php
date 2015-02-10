@@ -32,6 +32,18 @@ return array(
                                 'id' => 0,
                             ],
                         ],
+                        'may_terminate' => true,
+                        'child_routes' => [
+                            'popup-profile' => [
+                                'type' => 'literal',
+                                'options' => [
+                                    'route' => '/popup-profile',
+                                    'defaults' => [
+                                        'action' => 'popup-profile',
+                                    ],
+                                ],  
+                            ],
+                        ],
                     ],
                     'search' => [
                         'type' => 'Zend\Mvc\Router\Http\Literal',
