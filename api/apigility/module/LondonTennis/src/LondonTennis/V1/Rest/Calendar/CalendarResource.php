@@ -101,9 +101,10 @@ class CalendarResource extends AbstractResourceListener
     {
         $userId = $params['userId'];
         $startDate = $params['startDate'];
+        $endDate = date('Y-m-d', strtotime("+1 month", strtotime($startDate)));
         
         $resultSet = $this->gateway->select(
-            function (Select $select) use ($userId, $startDate) {
+            function (Select $select) use ($userId, $startDate, $endDate) {
                 $select->columns([
                     'morning',
                     'afternoon',
@@ -113,9 +114,12 @@ class CalendarResource extends AbstractResourceListener
                     'id' => 'matchDate',
                 ])
                 ->order('date ASC')
-                ->limit(30)
                 ->where->greaterThan('matchdate', $startDate)
-                ->and->equalTo('userid', $userId);
+                ->and->lessThan('matchdate', $endDate);
+                
+                if (!empty($userId)) {
+                    $select->where->and->equalTo('userid', $userId);
+                }
             }
         )->toArray();
     

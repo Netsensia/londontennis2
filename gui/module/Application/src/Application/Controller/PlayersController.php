@@ -20,12 +20,16 @@ class PlayersController extends ApiAwareController
     
     public function profileAction()
     {
-        $playerDetails = $this->getServiceLocator()->get('PlayerService')->getPlayerDetails(
-            $this->params()->fromRoute('playerid')
-        );
+        $playerService = $this->getServiceLocator()->get('PlayerService');
+        $calendarService = $this->getServiceLocator()->get('CalendarService');
+        $playerId = $this->params()->fromRoute('playerid');
+        
+        $playerDetails = $playerService->getPlayerDetails($playerId);
+        $calendarDetails = $calendarService->getCalendarForUser($playerId);
                 
         return [
-            'player' => $playerDetails,  
+            'player' => $playerDetails,
+            'calendar' => $calendarDetails, 
         ];
     }
     

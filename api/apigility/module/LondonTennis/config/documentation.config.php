@@ -16,6 +16,6 @@ return array(
         'description' => 'Player details.',
     ),
     'LondonTennis\\V1\\Rest\\Calendar\\Controller' => array(
-        'description' => 'Availability calendar.',
+        'description' => 'Availability calendar. Pass in userId and startDate. Will return one month\'s worth of calendar entries. Leave userId empty in order to retrieve calendar entries for all users.',
     ),
 );
