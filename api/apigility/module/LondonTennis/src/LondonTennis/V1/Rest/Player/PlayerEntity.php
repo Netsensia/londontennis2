@@ -20,9 +20,15 @@ class PlayerEntity
     private $matchesWon = 0;
     private $matchesDrawn = 0;
     private $matchesLost = 0;
+    private $lastPlayed = 'Never played';
+    private $uniqueOpponents = 0;
+    private $uniqueVenues = 0;
+    private $friendlyMatches = 0;
+    private $leagueMatches = 0;
+    private $knockoutMatches = 0;
     
     /**
-     * Admin only
+     * Admin update only
      */
     private $isAdmin;
     
@@ -46,6 +52,102 @@ class PlayerEntity
     private $homeClubId;
     private $homeClubName;
     
+    /**
+     * @return the $lastPlayed
+     */
+    public function getLastPlayed()
+    {
+        return $this->lastPlayed;
+    }
+
+    /**
+     * @param string $lastPlayed
+     */
+    public function setLastPlayed($lastPlayed)
+    {
+        $this->lastPlayed = $lastPlayed;
+    }
+
+    /**
+     * @return the $uniqueOpponents
+     */
+    public function getUniqueOpponents()
+    {
+        return $this->uniqueOpponents;
+    }
+
+    /**
+     * @param number $uniqueOpponents
+     */
+    public function setUniqueOpponents($uniqueOpponents)
+    {
+        $this->uniqueOpponents = $uniqueOpponents;
+    }
+
+    /**
+     * @return the $uniqueVenues
+     */
+    public function getUniqueVenues()
+    {
+        return $this->uniqueVenues;
+    }
+
+    /**
+     * @param number $uniqueVenues
+     */
+    public function setUniqueVenues($uniqueVenues)
+    {
+        $this->uniqueVenues = $uniqueVenues;
+    }
+
+    /**
+     * @return the $friendlyMatches
+     */
+    public function getFriendlyMatches()
+    {
+        return $this->friendlyMatches;
+    }
+
+    /**
+     * @param number $friendlyMatches
+     */
+    public function setFriendlyMatches($friendlyMatches)
+    {
+        $this->friendlyMatches = $friendlyMatches;
+    }
+
+    /**
+     * @return the $leagueMatches
+     */
+    public function getLeagueMatches()
+    {
+        return $this->leagueMatches;
+    }
+
+    /**
+     * @param number $leagueMatches
+     */
+    public function setLeagueMatches($leagueMatches)
+    {
+        $this->leagueMatches = $leagueMatches;
+    }
+
+    /**
+     * @return the $knockoutMatches
+     */
+    public function getKnockoutMatches()
+    {
+        return $this->knockoutMatches;
+    }
+
+    /**
+     * @param number $knockoutMatches
+     */
+    public function setKnockoutMatches($knockoutMatches)
+    {
+        $this->knockoutMatches = $knockoutMatches;
+    }
+
     /**
      * @return the $matchesWon
      */

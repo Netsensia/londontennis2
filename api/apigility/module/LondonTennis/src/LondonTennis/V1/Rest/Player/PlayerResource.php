@@ -167,6 +167,20 @@ class PlayerResource extends AbstractResourceListener
             $player->setHomeClubName($resultSet[0]['homeClubName']);
         }
         
+        $resultSet = $this->gateway->select(
+            function (\Zend\Db\Sql\Select $select) use ($id) {
+                $select
+                ->columns([])
+                ->join('tennismatchplayer', 'tennismatchplayer.userid = user.userid', ['c' => new Expression('COUNT(DISTINCT opponentid)')])
+                ->join('tennismatch', 'tennismatchplayer.matchid = tennismatch.matchid')
+                ->where(['user.userid' => $id, 'tennismatch.ishidden' => 'N']);
+            }
+        )->toArray();
+        
+        if (count($resultSet) == 1) {
+            $player->setUniqueOpponents($resultSet[0]['c']);
+        }
+        
         return $player;
     }
 

@@ -12,7 +12,11 @@ class PlayerService extends ApiAwareService
         }
         
         if (trim($playerDetails['joinDate']) != '') {
-            $playerDetails['joinDate'] = date('F j, Y', strtotime($playerDetails['joinDate']));
+            $playerDetails['joinDate'] = date('M j, Y', strtotime($playerDetails['joinDate']));
+        }
+        
+        if (trim($playerDetails['lastPlayedTime']) != '') {
+            $playerDetails['lastPlayedTime'] = date('M j, Y', strtotime($playerDetails['lastPlayedTime']));
         }
         
         if (trim($playerDetails['milesRadius']) != '' && trim($playerDetails['postcode']) != '') {
