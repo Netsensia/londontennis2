@@ -1,18 +1,16 @@
 
 $(document).ready(function(){
 	
-	
 	$(document).delegate('.playerpopup', 'click', function() {
 		$('#playermodal .box-profile-title').html($(this).attr('data-playerName'));
-		$('#playermodal .modal-body').load('/players/' + $(this).attr('data-playerId') + '/popup-profile', function() {
-			$('#playermodal').modal('show');
+		$('#playermodal .modal-body').html('<div style="text-align:center;width:100%"><img src="/img/ajax/ajax-loader.gif"></div>').load('/players/' + $(this).attr('data-playerId') + '/popup-profile', function() {
+			//$('#playermodal').modal('show');
 		});
 	});
 	
 	$('body').bind('touchstart', function() {});
     
-//Load ranodm flag image
-    
+//Load random flag image
     
 var images = ['England.png','Sweden.png','Germany.png','Australia.png','Malta.png','Sweden.png','Ireland.png','Poland.png','Belgium.png','Ukraine.png','Denmark.png','Estonia.png','Georgia.png','Italy.png','Iceland.png','Norway.png'];
     

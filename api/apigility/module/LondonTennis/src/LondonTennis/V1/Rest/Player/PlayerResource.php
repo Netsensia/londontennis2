@@ -5,6 +5,7 @@ use ZF\ApiProblem\ApiProblem;
 use ZF\Rest\AbstractResourceListener;
 use Application\Entity\OpponentPreferences;
 use Zend\Db\Sql\Select;
+use Zend\Db\Sql\Expression;
 
 class PlayerResource extends AbstractResourceListener
 {
@@ -84,6 +85,7 @@ class PlayerResource extends AbstractResourceListener
                         'ltaNumber' => 'ltanumber',
                         'userRating' => 'parkrating',
                         'ltaRating' => 'ltarating',
+                        'rankingPoints' => 'elo',
                         'siteRank' => 'siterank',
                         'male' => 'opponent_male',
                         'female' => 'opponent_female',
@@ -117,7 +119,38 @@ class PlayerResource extends AbstractResourceListener
         $opponentPreferences = new OpponentPreferences();
         $opponentPreferences->exchangeArray($row);
         
+        if ($player->getSiteRank() != 100000) {
+            $maxRank = $this->gateway->select(
+                function (\Zend\Db\Sql\Select $select) use ($id) {
+                    $select->columns(['maxRank' => new Expression('MAX(siterank)')])
+                           ->where->lessThan('siterank', 100000);
+                }
+            )->toArray()[0]['maxRank'];
+    
+            $percentile = ceil(100 * ($player->getSiteRank() / $maxRank));
+            $player->setPercentile($percentile);
+        }
+        
         $player->setOpponentPreferences($opponentPreferences);
+        
+        $resultSet = $this->gateway->select(
+            function (\Zend\Db\Sql\Select $select) use ($id) {
+                $select
+                ->columns(['c' => new Expression('COUNT(*)')])
+                ->join('tennismatchplayer', 'user.userid = tennismatchplayer.userid', ['winorlose'])
+                ->join('tennismatch', 'tennismatchplayer.matchid = tennismatch.matchid')
+                ->where(['user.userid' => $id, 'tennismatch.ishidden' => 'N'])
+                ->group(['winorlose']);
+            }
+        )->toArray();
+        
+        foreach ($resultSet as $row) {
+            switch ($row['winorlose']) {
+                case 'W' : $player->setMatchesWon($row['c']); break;
+                case 'L' : $player->setMatchesLost($row['c']); break;
+                case 'D' : $player->setMatchesDrawn($row['c']); break;
+            }
+        }
         
         $resultSet = $this->gateway->select(
             function (\Zend\Db\Sql\Select $select) use ($id) {

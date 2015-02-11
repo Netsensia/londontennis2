@@ -7,6 +7,6 @@ class PlayerLink extends AbstractHelper
 {
     public function __invoke($id, $name)
     {
-        echo '<a style="cursor:pointer" class="playerpopup" data-playerId="' . $id . '" data-playerName="' . $name . '">' . $name . '</a>';
+        echo '<a style="cursor:pointer" data-toggle="modal" data-target="#playermodal" class="playerpopup" data-playerId="' . $id . '" data-playerName="' . $name . '">' . $name . '</a>';
     }
 }

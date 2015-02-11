@@ -14,6 +14,12 @@ class PlayerEntity
     private $id;
     private $joinDate;
     private $lastPlayedTime;
+    private $percentile;
+    private $siteRank;
+    private $rankingPoints;
+    private $matchesWon;
+    private $matchesDrawn;
+    private $matchesLost;
     
     /**
      * Admin only
@@ -29,7 +35,6 @@ class PlayerEntity
     private $ltaNumber;
     private $userRating;
     private $ltaRating;
-    private $siteRank;
     private $milesRadius;
     private $postcode;
     
@@ -41,6 +46,86 @@ class PlayerEntity
     private $homeClubId;
     private $homeClubName;
     
+    /**
+     * @return the $matchesWon
+     */
+    public function getMatchesWon()
+    {
+        return $this->matchesWon;
+    }
+
+    /**
+     * @param field_type $matchesWon
+     */
+    public function setMatchesWon($matchesWon)
+    {
+        $this->matchesWon = $matchesWon;
+    }
+
+    /**
+     * @return the $matchesDrawn
+     */
+    public function getMatchesDrawn()
+    {
+        return $this->matchesDrawn;
+    }
+
+    /**
+     * @param field_type $matchesDrawn
+     */
+    public function setMatchesDrawn($matchesDrawn)
+    {
+        $this->matchesDrawn = $matchesDrawn;
+    }
+
+    /**
+     * @return the $matchesLost
+     */
+    public function getMatchesLost()
+    {
+        return $this->matchesLost;
+    }
+
+    /**
+     * @param field_type $matchesLost
+     */
+    public function setMatchesLost($matchesLost)
+    {
+        $this->matchesLost = $matchesLost;
+    }
+
+    /**
+     * @return the $percentile
+     */
+    public function getPercentile()
+    {
+        return $this->percentile;
+    }
+
+    /**
+     * @param field_type $percentile
+     */
+    public function setPercentile($percentile)
+    {
+        $this->percentile = $percentile;
+    }
+
+    /**
+     * @return the $rankingPoints
+     */
+    public function getRankingPoints()
+    {
+        return $this->rankingPoints;
+    }
+
+    /**
+     * @param field_type $rankingPoints
+     */
+    public function setRankingPoints($rankingPoints)
+    {
+        $this->rankingPoints = $rankingPoints;
+    }
+
     /**
      * @return the $homeClubId
      */
