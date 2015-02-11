@@ -15,8 +15,7 @@ class PlayerResource extends AbstractResourceListener
     private $gateway;
     
     /**
-     * @param AdapterInterface $connection
-     * @param string $passwordSalt
+     * @param \Zend\Db\TableGateway\TableGateway $connection
      */
     public function __construct(
         \Zend\Db\TableGateway\TableGateway $gateway
@@ -25,39 +24,6 @@ class PlayerResource extends AbstractResourceListener
         $this->gateway = $gateway;
     }
     
-    /**
-     * Create a resource
-     *
-     * @param  mixed $data
-     * @return ApiProblem|mixed
-     */
-    public function create($data)
-    {
-        return new ApiProblem(405, 'The POST method has not been defined');
-    }
-
-    /**
-     * Delete a resource
-     *
-     * @param  mixed $id
-     * @return ApiProblem|mixed
-     */
-    public function delete($id)
-    {
-        return new ApiProblem(405, 'The DELETE method has not been defined for individual resources');
-    }
-
-    /**
-     * Delete a collection, or members of a collection
-     *
-     * @param  mixed $data
-     * @return ApiProblem|mixed
-     */
-    public function deleteList($data)
-    {
-        return new ApiProblem(405, 'The DELETE method has not been defined for collections');
-    }
-
     /**
      * Fetch a resource
      *
@@ -292,5 +258,38 @@ class PlayerResource extends AbstractResourceListener
     public function update($id, $data)
     {
         return new ApiProblem(405, 'The PUT method has not been defined for individual resources');
+    }
+    
+    /**
+     * Create a resource
+     *
+     * @param  mixed $data
+     * @return ApiProblem|mixed
+     */
+    public function create($data)
+    {
+        return new ApiProblem(405, 'The POST method has not been defined');
+    }
+    
+    /**
+     * Delete a resource
+     *
+     * @param  mixed $id
+     * @return ApiProblem|mixed
+     */
+    public function delete($id)
+    {
+        return new ApiProblem(405, 'The DELETE method has not been defined for individual resources');
+    }
+    
+    /**
+     * Delete a collection, or members of a collection
+     *
+     * @param  mixed $data
+     * @return ApiProblem|mixed
+     */
+    public function deleteList($data)
+    {
+        return new ApiProblem(405, 'The DELETE method has not been defined for collections');
     }
 }

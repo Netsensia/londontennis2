@@ -15,6 +15,9 @@ class PlayerService extends ApiAwareService
             $playerDetails['joinDate'] = date('M j, Y', strtotime($playerDetails['joinDate']));
         }
         
+        if (trim($playerDetails['lastPlayedTime']) == '0000-00-00') {
+            $playerDetails['lastPlayedTime'] = 'N/A';
+        } else
         if (trim($playerDetails['lastPlayedTime']) != '') {
             $playerDetails['lastPlayedTime'] = date('M j, Y', strtotime($playerDetails['lastPlayedTime']));
         }

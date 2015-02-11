@@ -56,6 +56,15 @@ return array(
                     ),
                 ),
             ),
+            'london-tennis.rest.calendar' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/calendar[/:calendar_id]',
+                    'defaults' => array(
+                        'controller' => 'LondonTennis\\V1\\Rest\\Calendar\\Controller',
+                    ),
+                ),
+            ),
         ),
     ),
     'zf-versioning' => array(
@@ -67,6 +76,7 @@ return array(
             5 => 'london-tennis.rest.thread',
             6 => 'london-tennis.rest.post',
             7 => 'london-tennis.rest.player',
+            8 => 'london-tennis.rest.calendar',
         ),
     ),
     'service_manager' => array(
@@ -76,6 +86,7 @@ return array(
             'LondonTennis\\V1\\Rest\\Thread\\ThreadResource' => 'LondonTennis\\V1\\Rest\\Thread\\ThreadResourceFactory',
             'LondonTennis\\V1\\Rest\\Post\\PostResource' => 'LondonTennis\\V1\\Rest\\Post\\PostResourceFactory',
             'LondonTennis\\V1\\Rest\\Player\\PlayerResource' => 'LondonTennis\\V1\\Rest\\Player\\PlayerResourceFactory',
+            'LondonTennis\\V1\\Rest\\Calendar\\CalendarResource' => 'LondonTennis\\V1\\Rest\\Calendar\\CalendarResourceFactory',
         ),
     ),
     'zf-rest' => array(
@@ -167,6 +178,25 @@ return array(
             'collection_class' => 'LondonTennis\\V1\\Rest\\Player\\PlayerCollection',
             'service_name' => 'player',
         ),
+        'LondonTennis\\V1\\Rest\\Calendar\\Controller' => array(
+            'listener' => 'LondonTennis\\V1\\Rest\\Calendar\\CalendarResource',
+            'route_name' => 'london-tennis.rest.calendar',
+            'route_identifier_name' => 'calendar_id',
+            'collection_name' => 'calendar',
+            'entity_http_methods' => array(),
+            'collection_http_methods' => array(
+                0 => 'GET',
+            ),
+            'collection_query_whitelist' => array(
+                0 => 'startDate',
+                1 => 'userId',
+            ),
+            'page_size' => 25,
+            'page_size_param' => null,
+            'entity_class' => 'LondonTennis\\V1\\Rest\\Calendar\\CalendarEntity',
+            'collection_class' => 'LondonTennis\\V1\\Rest\\Calendar\\CalendarCollection',
+            'service_name' => 'calendar',
+        ),
     ),
     'zf-content-negotiation' => array(
         'controllers' => array(
@@ -175,6 +205,7 @@ return array(
             'LondonTennis\\V1\\Rest\\Thread\\Controller' => 'HalJson',
             'LondonTennis\\V1\\Rest\\Post\\Controller' => 'HalJson',
             'LondonTennis\\V1\\Rest\\Player\\Controller' => 'HalJson',
+            'LondonTennis\\V1\\Rest\\Calendar\\Controller' => 'HalJson',
         ),
         'accept_whitelist' => array(
             'LondonTennis\\V1\\Rest\\Token\\Controller' => array(
@@ -202,6 +233,11 @@ return array(
                 1 => 'application/hal+json',
                 2 => 'application/json',
             ),
+            'LondonTennis\\V1\\Rest\\Calendar\\Controller' => array(
+                0 => 'application/vnd.london-tennis.v1+json',
+                1 => 'application/hal+json',
+                2 => 'application/json',
+            ),
         ),
         'content_type_whitelist' => array(
             'LondonTennis\\V1\\Rest\\Token\\Controller' => array(
@@ -221,6 +257,10 @@ return array(
                 1 => 'application/json',
             ),
             'LondonTennis\\V1\\Rest\\Player\\Controller' => array(
+                0 => 'application/vnd.london-tennis.v1+json',
+                1 => 'application/json',
+            ),
+            'LondonTennis\\V1\\Rest\\Calendar\\Controller' => array(
                 0 => 'application/vnd.london-tennis.v1+json',
                 1 => 'application/json',
             ),
@@ -286,6 +326,18 @@ return array(
                 'entity_identifier_name' => 'id',
                 'route_name' => 'london-tennis.rest.player',
                 'route_identifier_name' => 'player_id',
+                'is_collection' => true,
+            ),
+            'LondonTennis\\V1\\Rest\\Calendar\\CalendarEntity' => array(
+                'entity_identifier_name' => 'id',
+                'route_name' => 'london-tennis.rest.calendar',
+                'route_identifier_name' => 'calendar_id',
+                'hydrator' => 'Zend\\Stdlib\\Hydrator\\ArraySerializable',
+            ),
+            'LondonTennis\\V1\\Rest\\Calendar\\CalendarCollection' => array(
+                'entity_identifier_name' => 'id',
+                'route_name' => 'london-tennis.rest.calendar',
+                'route_identifier_name' => 'calendar_id',
                 'is_collection' => true,
             ),
         ),
