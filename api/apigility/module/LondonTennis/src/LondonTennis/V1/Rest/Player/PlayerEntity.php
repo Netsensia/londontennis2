@@ -17,9 +17,9 @@ class PlayerEntity
     private $percentile;
     private $siteRank;
     private $rankingPoints;
-    private $matchesWon;
-    private $matchesDrawn;
-    private $matchesLost;
+    private $matchesWon = 0;
+    private $matchesDrawn = 0;
+    private $matchesLost = 0;
     
     /**
      * Admin only
