@@ -93,7 +93,8 @@ a {
     height:100px;
     background-color:#eee;
     padding:10px;
-    border-radius:3px
+    border-radius:3px;
+	overflow:auto
 }
 
 .box-about-details:after {
