@@ -181,6 +181,70 @@ class PlayerResource extends AbstractResourceListener
             $player->setUniqueOpponents($resultSet[0]['c']);
         }
         
+        $resultSet = $this->gateway->select(
+            function (\Zend\Db\Sql\Select $select) use ($id) {
+                $select
+                ->columns([])
+                ->join('tennismatchplayer', 'tennismatchplayer.userid = user.userid', ['c' => new Expression('COUNT(DISTINCT venueid)')])
+                ->join('tennismatch', 'tennismatchplayer.matchid = tennismatch.matchid')
+                ->where->notEqualTo('venueid', '-1')
+                ->and->equalTo('user.userid', $id)
+                ->and->equalTo('tennismatch.ishidden', 'N');
+            }
+        )->toArray();
+        
+        if (count($resultSet) == 1) {
+            $player->setUniqueVenues($resultSet[0]['c']);
+        }
+        
+        $resultSet = $this->gateway->select(
+            function (\Zend\Db\Sql\Select $select) use ($id) {
+                $select
+                ->columns([])
+                ->join('tennismatchplayer', 'tennismatchplayer.userid = user.userid', ['c' => new Expression('COUNT(*)')])
+                ->join('tennismatch', 'tennismatchplayer.matchid = tennismatch.matchid')
+                ->where->equalTo('competitionid', '0')
+                ->and->equalTo('knockoutid', '0')
+                ->and->equalTo('user.userid', $id);
+            }
+        )->toArray();
+        
+        if (count($resultSet) == 1) {
+            $player->setFriendlyMatches($resultSet[0]['c']);
+        }
+        
+        $resultSet = $this->gateway->select(
+            function (\Zend\Db\Sql\Select $select) use ($id) {
+                $select
+                ->columns([])
+                ->join('tennismatchplayer', 'tennismatchplayer.userid = user.userid', ['c' => new Expression('COUNT(*)')])
+                ->join('tennismatch', 'tennismatchplayer.matchid = tennismatch.matchid')
+                ->where->notEqualTo('competitionid', '0')
+                ->and->equalTo('knockoutid', '0')
+                ->and->equalTo('user.userid', $id);
+            }
+        )->toArray();
+        
+        if (count($resultSet) == 1) {
+            $player->setLeagueMatches($resultSet[0]['c']);
+        }
+        
+        $resultSet = $this->gateway->select(
+            function (\Zend\Db\Sql\Select $select) use ($id) {
+                $select
+                ->columns([])
+                ->join('tennismatchplayer', 'tennismatchplayer.userid = user.userid', ['c' => new Expression('COUNT(*)')])
+                ->join('tennismatch', 'tennismatchplayer.matchid = tennismatch.matchid')
+                ->where->equalTo('competitionid', '0')
+                ->and->notEqualTo('knockoutid', '0')
+                ->and->equalTo('user.userid', $id);
+            }
+        )->toArray();
+        
+        if (count($resultSet) == 1) {
+            $player->setKnockoutMatches($resultSet[0]['c']);
+        }
+        
         return $player;
     }
 
