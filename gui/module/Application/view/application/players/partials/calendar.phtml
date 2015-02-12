@@ -1,0 +1,28 @@
+<div class="table-responsive">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Date</th>
+				<th class="text-center">Morning</th>
+				<th class="text-center">Afternoon</th>
+				<th class="text-center">Evening</th>
+				<th>Match Type</th>
+			</tr>
+		</thead>
+
+		<tbody>
+		    <?php for ($i=0; $i<$this->calendar_entries; $i++) : ?>
+		    <?php $calendarEntry = $this->calendar[$i]; ?>
+		    <?php $timestamp = strtotime($calendarEntry['date']); ?>
+		    <?php $dayOfWeek = date('D', $timestamp); ?>
+			<tr<?php if (substr($dayOfWeek, 0, 1) == 'S') echo 'class="weekend"'?>>
+				<td><?php echo date('l M jS, Y', $timestamp); ?></td>
+				<td align="center"><?php echo $calendarEntry['morning'] == 'Y' ? '&check;' : '&nbsp;'; ?></td>
+				<td align="center"><?php echo $calendarEntry['afternoon'] == 'Y' ? '&check;' : '&nbsp;'; ?></td>
+				<td align="center"><?php echo $calendarEntry['evening'] == 'Y' ? '&check;' : '&nbsp;'; ?></td>
+				<td><?php echo $calendarEntry['matchType']; ?></td>
+			</tr>
+			<?php endfor; ?>
+		</tbody>
+	</table>
+</div>

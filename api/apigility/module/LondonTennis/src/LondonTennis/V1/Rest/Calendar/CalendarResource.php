@@ -101,6 +101,15 @@ class CalendarResource extends AbstractResourceListener
     {
         $userId = $params['userId'];
         $startDate = $params['startDate'];
+        
+        if (empty($startDate)) {
+            return new ApiProblem(400, 'startDate parameter is required');
+        }
+        
+        if (empty($userId)) {
+            return new ApiProblem(400, 'userId parameter is required');
+        }
+        
         $endDate = date('Y-m-d', strtotime("+1 month", strtotime($startDate)));
         
         $resultSet = $this->gateway->select(
@@ -110,8 +119,8 @@ class CalendarResource extends AbstractResourceListener
                     'afternoon',
                     'evening',
                     'matchType' => 'type',
-                    'date' => 'matchDate',
-                    'id' => 'matchDate',
+                    'date' => 'matchdate',
+                    'id' => 'matchdate',
                 ])
                 ->order('date ASC')
                 ->where->greaterThan('matchdate', $startDate)
@@ -124,11 +133,23 @@ class CalendarResource extends AbstractResourceListener
         )->toArray();
     
         $entities = [];
-    
-        foreach ($resultSet as $row) {
+        
+        for ($i=0; $i<28; $i++) {
+            $calendarDate = date('Y-m-d', strtotime('+' . $i . 'days', strtotime($startDate)));
+            
             $entity = new CalendarEntity();
-            $entity->exchangeArray($row);
+            $entity->setId(uniqid());
+            $entity->setDate($calendarDate);
             $entities[] = $entity;
+            
+            foreach ($resultSet as $row) {
+                $rowDate = date('Y-m-d', strtotime($row['date']));
+                if ($rowDate == $calendarDate) {
+                    $entity->exchangeArray($row);
+                    break;
+                }
+            }
+            
         }
     
         $adapter = new ArrayAdapter($entities);

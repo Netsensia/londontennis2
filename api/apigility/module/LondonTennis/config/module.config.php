@@ -191,7 +191,7 @@ return array(
                 0 => 'startDate',
                 1 => 'userId',
             ),
-            'page_size' => 25,
+            'page_size' => '28',
             'page_size_param' => null,
             'entity_class' => 'LondonTennis\\V1\\Rest\\Calendar\\CalendarEntity',
             'collection_class' => 'LondonTennis\\V1\\Rest\\Calendar\\CalendarCollection',

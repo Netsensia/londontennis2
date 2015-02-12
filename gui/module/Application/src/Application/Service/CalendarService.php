@@ -9,11 +9,17 @@ class CalendarService extends ApiAwareService
         $startDate = date('Ymd');
         $startDate = '20100202';
         
-        return $this->api()->getCalendarEntries($userId, $startDate);
+        $entries = $this->api()->getCalendarEntries($userId, $startDate)['_embedded']['calendar'];
+        foreach ($entries as &$entry) {
+            switch ($entry['matchType']) {
+                case '': $entry['matchType'] = ''; break;
+                case 0: $entry['matchType'] = 'Any'; break;
+                case 1: $entry['matchType'] = 'Friendly'; break;
+                case 2: $entry['matchType'] = 'League or Knockout'; break;
+            }
+        }
+        
+        return $entries;
     }
-    
-    public function getCalendar()
-    {
-        return $this->api()->getCalendarEntries(null, date('Ymd'));
-    }
+
 }

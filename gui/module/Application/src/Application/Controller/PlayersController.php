@@ -29,7 +29,8 @@ class PlayersController extends ApiAwareController
                 
         return [
             'player' => $playerDetails,
-            'calendar' => $calendarDetails, 
+            'calendar' => $calendarDetails,
+            'calendar_entries' => 5,
         ];
     }
     
