@@ -5,7 +5,7 @@ class OpponentPreferences
 {
     use ToAndFromArray;
     
-       /**
+    /**
      * @var boolean
      */
     private $male;

@@ -1,28 +1,28 @@
 <?php
-namespace LondonTennis\V1\Rest\Post;
+namespace LondonTennis\V1\Rest\Result;
 
 use ZF\ApiProblem\ApiProblem;
 use ZF\Rest\AbstractResourceListener;
-use Zend\Db\TableGateway\TableGateway;
+use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\Sql\Select;
 use Zend\Paginator\Adapter\ArrayAdapter;
-use Zend\Db\Adapter\AdapterInterface;
+use Zend\Db\Sql\Where;
 
-class PostResource extends AbstractResourceListener
+class ResultResource extends AbstractResourceListener
 {
     /**
-     * @var AdapterInterface
+     * @var \Zend\Db\TableGateway\TableGateway
      */
-    private $adapter;
+    private $gateway;
     
     /**
-     * @param AdapterInterface $connection
+     * @param \Zend\Db\TableGateway\TableGateway $connection
      */
     public function __construct(
-        AdapterInterface $adapter
+        \Zend\Db\TableGateway\TableGateway $gateway
     )
     {
-        $this->adapter = $adapter;
+        $this->gateway = $gateway;
     }
     
     /**
@@ -70,46 +70,6 @@ class PostResource extends AbstractResourceListener
     }
 
     /**
-     * Fetch all or a subset of resources
-     *
-     * @param  array $params
-     * @return ApiProblem|mixed
-     */
-    public function fetchAll($params = array())
-    {
-        $threadId = $params['thread_id'];
-        
-        if (empty($threadId)) {
-            return new ApiProblem(400, 'thread_id parameter is required');
-        }
-        
-        $gateway = new TableGateway('forumpost', $this->adapter);
-        
-        $resultSet = $gateway->select(
-            function (Select $select) use ($threadId) {
-                $select
-                    ->columns([
-                        'id' => 'postid',
-                        'content' => 'postcontent',
-                        'postedTime' => 'posteddate',
-                        'posterId' => 'posterid',
-                        'editCount' => 'posteditcount',
-                        'alterCount' => 'postalertcount',
-                        'editTime' => 'posteditdate',
-                        'recommendations' => 'postrecs',
-                    ])
-                    ->join('user', 'posterid = userid', ['posterName' => 'name'], 'left')
-                    ->where(['postthreadid' => $threadId, 'postishidden' => 'N']);
-            }
-        )->toArray();
-
-        $adapter = new ArrayAdapter($resultSet);
-        $collection = new PostCollection($adapter);
-
-        return $collection;
-    }
-
-    /**
      * Patch (partial in-place update) a resource
      *
      * @param  mixed $id
@@ -142,5 +102,45 @@ class PostResource extends AbstractResourceListener
     public function update($id, $data)
     {
         return new ApiProblem(405, 'The PUT method has not been defined for individual resources');
+    }
+    
+    /**
+     * Fetch all or a subset of resources
+     *
+     * @param  array $params
+     * @return ApiProblem|mixed
+     */
+    public function fetchAll($params = array())
+    {
+        $players = $params['players'];
+        
+        $resultSet = $this->gateway->select(
+            function (Select $select) use ($players) {
+                
+                $where = new Where();
+                
+                if (count($players) == 1) {
+                    $where->equalTo('tennismatchplayer.userid', $players[0]);
+                }
+                
+                if (count($players) == 2) {
+                    $where->and->equalTo('tennismatchplayer.userid', $players[1]);
+                }
+                
+                $select->columns([
+                    'matchid',
+                    'player1',
+                    'player2',
+                ])
+                ->quantifier(\Zend\Db\Sql\Select::QUANTIFIER_DISTINCT)
+                ->join(['a' => 'user'], 'tennismatch.player1 = a.userid', ['player1Name' => 'name'])
+                ->join(['b' => 'user'], 'tennismatch.player2 = b.userid', ['player2Name' => 'name'])
+                ->join('tennismatchplayer', 'tennismatch.matchid = tennismatchplayer.matchid', [])
+                ->where($where);
+                
+            }
+        )->toArray();
+        
+        return new ResultCollection(new ArrayAdapter($resultSet));
     }
 }
