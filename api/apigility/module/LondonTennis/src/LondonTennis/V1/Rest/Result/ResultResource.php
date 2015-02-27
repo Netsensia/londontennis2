@@ -148,7 +148,7 @@ class ResultResource extends AbstractResourceListener
                 ->join('tennismatchplayer', 'tennismatch.matchid = tennismatchplayer.matchid', [])
                 ->join(['a' => 'user'], 'tennismatch.player1 = a.userid', ['player1Name' => 'name'])
                 ->join(['b' => 'user'], 'tennismatch.player2 = b.userid', ['player2Name' => 'name'])
-                ->join('club', 'tennismatch.venueid = club.clubid', ['venueName' => 'name'])
+                ->join('club', 'tennismatch.venueid = club.clubid', ['venueName' => 'name'], Select::JOIN_LEFT)
                 ->where($where);
                 
             }
@@ -180,7 +180,13 @@ class ResultResource extends AbstractResourceListener
         
         // Add set scores for results on the current page
         for ($i=1; $i<=$this->pageSize; $i++) {
-            $item = $collection->getItem($i, $params['page']);
+            
+            try {
+                $item = $collection->getItem($i, $params['page']);
+            }
+            catch (\Exception $e) {
+                break;
+            }
             
             $matchId = $item->getId();
             
