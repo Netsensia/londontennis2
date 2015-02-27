@@ -2,12 +2,15 @@
 namespace LondonTennis\V1\Rest\Result;
 
 use Application\Entity\IdName;
+use Application\Entity\ToAndFromArray;
 
 class ResultEntity
 {
+    use ToAndFromArray;
+    
     private $id;
     
-       /**
+    /**
      * @var IdName
      */
     private $player1;
@@ -24,7 +27,7 @@ class ResultEntity
     
     private $matchDate;
     
-       /**
+    /**
      * @var IdName
      */
     private $venue;

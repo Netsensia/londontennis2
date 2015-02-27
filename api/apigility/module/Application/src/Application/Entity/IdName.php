@@ -9,6 +9,13 @@ class IdName
     private $name;
     private $comments;
     
+    public function __construct($id, $name, $comments = '')
+    {
+        $this->id = $id;
+        $this->name = $name;
+        $this->comments = $comments;
+    }
+    
     /**
      * @return the $comments
      */

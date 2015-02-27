@@ -5,4 +5,5 @@ use Zend\Paginator\Paginator;
 
 class ResultCollection extends Paginator
 {
+    
 }

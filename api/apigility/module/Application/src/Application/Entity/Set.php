@@ -5,38 +5,72 @@ class Set
 {
     use ToAndFromArray;
     
-    private $player1games;
-    private $player2games;
-    
+    private $player1Games;
+    private $player2Games;
+    private $isTieBreak;
+    private $setNumber;
+     
     /**
-     * @return the $player1games
+     * @return the $isTieBreak
      */
-    public function getPlayer1games()
+    public function getIsTieBreak()
     {
-        return $this->player1games;
+        return $this->isTieBreak;
     }
 
     /**
-     * @param field_type $player1games
+     * @param field_type $isTieBreak
      */
-    public function setPlayer1games($player1games)
+    public function setIsTieBreak($isTieBreak)
     {
-        $this->player1games = $player1games;
+        $this->isTieBreak = $isTieBreak;
     }
 
     /**
-     * @return the $player2games
+     * @return the $setNumber
      */
-    public function getPlayer2games()
+    public function getSetNumber()
     {
-        return $this->player2games;
+        return $this->setNumber;
     }
 
     /**
-     * @param field_type $player2games
+     * @param field_type $setNumber
      */
-    public function setPlayer2games($player2games)
+    public function setSetNumber($setNumber)
     {
-        $this->player2games = $player2games;
+        $this->setNumber = $setNumber;
+    }
+
+    /**
+     * @return the $player1Games
+     */
+    public function getPlayer1Games()
+    {
+        return $this->player1Games;
+    }
+
+    /**
+     * @param field_type $player1Games
+     */
+    public function setPlayer1Games($player1Games)
+    {
+        $this->player1Games = $player1Games;
+    }
+
+    /**
+     * @return the $player2Games
+     */
+    public function getPlayer2Games()
+    {
+        return $this->player2Games;
+    }
+
+    /**
+     * @param field_type $player2Games
+     */
+    public function setPlayer2Games($player2Games)
+    {
+        $this->player2Games = $player2Games;
     }
 }

@@ -224,6 +224,7 @@ return array(
             ),
             'collection_query_whitelist' => array(
                 0 => 'players',
+                1 => 'page',
             ),
             'page_size' => 25,
             'page_size_param' => null,

@@ -12,8 +12,11 @@ class ResultResourceFactory
             $services->get('DatabaseAdapter')
         );
         
+        $config = $services->get('config');
+        
         return new ResultResource(
-            $gateway
+            $gateway,
+            $config['zf-rest']['LondonTennis\\V1\\Rest\\Result\\Controller']['page_size']
         );
     }
 }
