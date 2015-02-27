@@ -94,146 +94,20 @@
 
 							<div class="division-name">
 								<p>
-									Recent results for Paul <a href="#results">View all matches</a>
+									Recent results for <?= $this->player['name']; ?> <a href="#results">View all matches</a>
 								</p>
 
 							</div>
-							<div class="table-responsive">
-								<table class="table table-striped">
-									<thead>
-
-
-
-										<tr>
-											<th>Date</th>
-											<th>Player 1</th>
-											<th>Player 2</th>
-											<th>Score</th>
-											<th>Type</th>
-											<th>Venue</th>
-
-
-
-										</tr>
-
-									</thead>
-
-									<tbody>
-										<tr>
-											<td>14 Dev '14</td>
-											<td><a href="#player-1">dmitri79</a></td>
-											<td><a href="#player-2">yanis_a</a></td>
-											<td>6-4 6-4 7-5 5-2</td>
-											<td>Friendly</td>
-											<td><a href="#venue">Southfields Recreation Ground</a></td>
-
-
-										</tr>
-
-										<tr>
-											<td>14 Dev '14</td>
-											<td><a href="#player-1">dmitri79</a></td>
-											<td><a href="#player-2">yanis_a</a></td>
-											<td>6-4 6-4 7-5 5-2</td>
-											<td>Friendly</td>
-											<td><a href="#venue">Southfields Recreation Ground</a></td>
-
-
-										</tr>
-
-										<tr>
-											<td>14 Dev '14</td>
-											<td><a href="#player-1">dmitri79</a></td>
-											<td><a href="#player-2">yanis_a</a></td>
-											<td>6-4 6-4 7-5 5-2</td>
-											<td>Friendly</td>
-											<td><a href="#venue">Southfields Recreation Ground</a></td>
-
-
-										</tr>
-
-										<tr>
-											<td>14 Dev '14</td>
-											<td><a href="#player-1">dmitri79</a></td>
-											<td><a href="#player-2">yanis_a</a></td>
-											<td>6-4 6-4 7-5 5-2</td>
-											<td>Friendly</td>
-											<td><a href="#venue">Southfields Recreation Ground</a></td>
-
-
-										</tr>
-
-										<tr>
-											<td>14 Dev '14</td>
-											<td><a href="#player-1">dmitri79</a></td>
-											<td><a href="#player-2">yanis_a</a></td>
-											<td>6-4 6-4 7-5 5-2</td>
-											<td>Friendly</td>
-											<td><a href="#venue">Southfields Recreation Ground</a></td>
-
-
-										</tr>
-
-										<tr>
-											<td>14 Dev '14</td>
-											<td><a href="#player-1">dmitri79</a></td>
-											<td><a href="#player-2">yanis_a</a></td>
-											<td>6-4 6-4 7-5 5-2</td>
-											<td>Friendly</td>
-											<td><a href="#venue">Southfields Recreation Ground</a></td>
-
-
-										</tr>
-
-
-
-									</tbody>
-
-
-
-
-								</table>
-							</div>
+							<?php echo $this->partial('application/players/partials/results-table.phtml', ['resultList' => $this->results]); ?>
 
 							<hr>
 
 
 							<div class="division-name">
-								<p>Your recent results against Paul</p>
+								<p>Your recent results against <?= $this->player['name']; ?></p>
 
 							</div>
-							<div class="table-responsive">
-								<table class="table table-striped">
-									<thead>
-										<tr>
-											<th>Date</th>
-											<th>Player 1</th>
-											<th>Player 2</th>
-											<th>Score</th>
-											<th>Type</th>
-											<th>Venue</th>
-										</tr>
-
-									</thead>
-
-									<tbody>
-										<tr>
-											<td colspan="6" class="text-center">You have not
-												recorded any matches with this player</td>
-
-
-
-										</tr>
-
-
-									</tbody>
-
-
-
-
-								</table>
-							</div>
-
+							<?php echo $this->partial('application/players/partials/results-table.phtml', ['resultList' => $this->resultsAgainstYou]); ?>
 
 							<hr>
 

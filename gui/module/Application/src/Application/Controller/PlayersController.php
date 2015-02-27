@@ -22,14 +22,27 @@ class PlayersController extends ApiAwareController
     {
         $playerService = $this->getServiceLocator()->get('PlayerService');
         $calendarService = $this->getServiceLocator()->get('CalendarService');
+        $resultsService = $this->getServiceLocator()->get('ResultsService');
+        
         $playerId = $this->params()->fromRoute('playerid');
+        
+        if ($this->identity()) {
+            $userId = $this->identity()->getUserId();
+            $resultsAgainstYou = $resultsService->getResultsForTwoPlayers($playerId, $userId);
+        } else {
+            $resultsAgainstYou = null;
+        }
+        
         
         $playerDetails = $playerService->getPlayerDetails($playerId);
         $calendarDetails = $calendarService->getCalendarForUser($playerId);
-                
+        $results = $resultsService->getResultsForPlayer($playerId);
+        
         return [
             'player' => $playerDetails,
             'calendar' => $calendarDetails,
+            'results' => $results,
+            'resultsAgainstYou' => $resultsAgainstYou,
             'calendar_entries' => 5,
         ];
     }
